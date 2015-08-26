@@ -70,7 +70,9 @@ a:hover,a:active{
   bottom:0;
   height:50px;
 }
-
+.sections{
+  
+}
 section{
   outline:1px solid #fff;
 }
