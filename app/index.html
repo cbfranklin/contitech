@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en-us">
 
 <head>
     <meta charset="utf-8">
@@ -16,6 +16,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -26,9 +27,11 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
-        <div class="header container">
-            <div class="logo"></div>
+    <div class="header">
+        <div class="container relative">
+            <div class="logo">
+                <img src="images/continental-logo.png" />
+            </div>
             <div class="small-nav header-nav">
                 <ul>
                     <li><a href="#">What ability do you need?</a></li>
@@ -38,31 +41,604 @@
             </div>
         </div>
     </div>
-    <div class="container sections">
-        <section id="add-more-ability"></section>
-        <section id="discover-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
-        <section id="-ability"></section>
+    <div class="ability-nav">
+        <ul>
+            <li><a href="#" data-ability="account">Account<em>ability</em></a></li>
+            <li><a href="#" data-ability="assure">Assure<em>ability</em></a></li>
+            <li><a href="#" data-ability="expand">Expand<em>ability</em></a></li>
+            <li><a href="#" data-ability="knowledge">Knowledge<em>ability</em></a></li>
+            <li><a href="#" data-ability="protect">Protect<em>ability</em></a></li>
+            <li><a href="#" data-ability="sustain">Sustain<em>ability</em></a></li>
+            <li><a href="#" data-ability="target">Target<em>ability</em></a></li>
+        </ul>
     </div>
-    <div class="container">
-      <div class="footer container">
-        <div class="small-nav footer-nav">
-            <ul>
-                <li><a href="#">Conveyor Belt</a></li>
-                <li><a href="#">Hydraulic Hose</a></li>
-                <li><a href="#">Industrial Hose</a></li>
-                <li><a href="#">Power Transmission Products</a></li>
-                <li><a href="#">Rubber Track</a></li>
-            </ul>
-            <p>Goodyear Engineered Products are now branded Continental ContiTech</p>
+    <div class="sections">
+        <section id="add-more-ability">
+            <div class="background"></div>
+            <div class="content">
+                <h1>add more <em>ability</em></h1>
+                <p><b>We’re taking ability next level.</b> From industry specific applications, products, support and service, ContiTech brings added abilities to your business to meet your unique needs, enhance efficiencies and take your success next level.</p>
+            </div>
+        </section>
+        <section id="discover-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <h2>Discover<em>ability</em></h2>
+                </div>
+            </div>
+        </section>
+        <section id="account-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Account<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="account-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="assure-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Assure<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="assure-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="expand-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Expand<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="expand-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="knowledge-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Knowledge<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="knowledge-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="protect-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Protect<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="protect-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="sustain-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Sustain<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="sustain-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="target-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <div class="col-md-6">
+                        <h2>Target<em>ability</em></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                    </div>
+                </div>
+                <div class="row content-carousel">
+                    <div class="col-md-12">
+                        <div id="target-ability-carousel" class="carousel slide">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-7">
+                                        <div class="carousel-copy">
+                                            <h3>Ability sit amet, consectetur adipiscing elit.</h3>
+                                            <p>Nulla sed pellentesque enim, in tincidunt turpis. Cras sed magna justo. Pellentesque pretium accumsan consequat. Integer aliquet id ex eget aliquam.Aliquam erat volutpat. Maecenas vel purus bibendum, mattis risus ut, scelerisque justo. Nulla venenatis ligula quis tellus consequat, Aenean vitae pellentesque arcu. Cras quis augue quis purus posuere tincidunt eu sit amet dolor. Aliquam dictum pharetra leo, sed scelerisque mi laoreet eu.</p>
+                                        </div>
+                                        <div class="carousel-pdf">
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                            <a href="#"><img src="images/temp/carousel-pdf.png" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 carousel-image">
+                                        <img src="images/temp/carousel-image.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Carousel nav -->
+                            <a class="carousel-control left" href="#contitech-carousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#contitech-carousel" data-slide="next">&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="what-ability">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <h2>What <em>ability</em> do you need?</h2>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="background"></div>
+            <div class="content">
+                <div class="row content-header">
+                    <h2>Contact</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="footer">
+        <div class="container relative">
+            <div class="footer-nav">
+                <div class="col-md-10 small-nav">
+                <ul>
+                    <li><a href="#">Conveyor Belt</a></li>
+                    <li><a href="#">Hydraulic Hose</a></li>
+                    <li><a href="#">Industrial Hose</a></li>
+                    <li><a href="#">Power Transmission Products</a></li>
+                    <li><a href="#">Rubber Track</a></li>
+                </ul>
+                <p>Goodyear Engineered Products are now branded Continental ContiTech</p>
+                </div>
+                 <div class="col-md-2 footer-contitech-logo">
+                    <img src="images/contitech-logo.png"/>
+                 </div>
+            </div>
         </div>
     </div>
-  </div>
+    </div>
+    <div id="templates">
+        <script type="text/template"></script>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -70,6 +646,7 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
     <script src="/bower_components/grapnel/dist/grapnel.min.js"></script>
+    <script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.) scripts/plugins.js -->
@@ -85,7 +662,9 @@
     <script src="/bower_components/bootstrap/js/scrollspy.js"></script>
     <script src="/bower_components/bootstrap/js/collapse.js"></script>
     <script src="/bower_components/bootstrap/js/tab.js"></script>
-    <script src="/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min.js"></script>
+    <script src="/bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
+    <script src="/bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
+    <!--<script src="/bower_components/scrollmagic/scrollmagic/uncompressed/plugins/jquery.Scrollmagic.js"></script>-->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>

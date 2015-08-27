@@ -1,0 +1,16 @@
+@media (max-width: 768px){
+
+
+.header,.footer{
+	position:static;
+}
+.ability-nav{
+	display:none!important;
+}
+h1{
+	font-size:30px;
+}
+h2{
+	font-size:20px;
+}
+}
