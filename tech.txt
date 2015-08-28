@@ -1,0 +1,17 @@
+Greensock
+http://greensock.com/gsap
+
+Velocity.JS
+http://julian.com/research/velocity/
+
+ScrollMagic
+https://github.com/janpaepke/ScrollMagic
+
+Grapnel
+https://github.com/bytecipher/grapnel
+
+AngularJS
+https://angularjs.org/
+
+jQuery
+https://jquery.com/
