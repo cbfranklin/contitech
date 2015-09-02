@@ -10,29 +10,39 @@ $(function() {
 
 //init
 contitech.init = function() {
+    contitech.loadAbilities();
     contitech.getWindowHeight();
     contitech.parallax();
     contitech.navigation();
     $(window).on('resize', function() {
         contitech.getWindowHeight();
     })
+    new WOW().init();
 }
 
 //get screen height, set to refresh on resize
 contitech.getWindowHeight = function() {
-    console.log('getWindowHeight')
     var height = $(window).height();
     var width = $(window).width();
     contitech.windowDimensions = {
         width: width,
-        height: height
+        height: height + 1
     }
     contitech.setSectionHeight()
 }
 
+contitech.loadAbilities = function() {
+    var template = $('#templates .ability').html();
+    var rendered = Mustache.render(template, content);
+    $('#discover-ability').after(rendered);
+    $('.content-carousel').each(function() {
+        console.log($(this))
+        $(this).find('.item').eq(0).addClass('active')
+    })
+}
+
 //set section heights to screen height
 contitech.setSectionHeight = function() {
-    console.log('setSectionHeight')
     $('section').css({
         'height': contitech.windowDimensions.height
     })
@@ -50,7 +60,7 @@ contitech.parallax = function() {
             triggerElement: "#add-more-ability"
         })
         .setTween("#add-more-ability .background", {
-            y: "80%",
+            y: "+=80%",
             ease: Linear.easeNone
         })
         .addIndicators()
@@ -134,7 +144,7 @@ contitech.parallax = function() {
         .addTo(this.controller)
         .on('enter', contitech.updateNavigation);
 
-     new ScrollMagic.Scene({
+    new ScrollMagic.Scene({
             triggerElement: "#target-ability"
         })
         .setTween("#target-ability .background", {
@@ -166,23 +176,27 @@ contitech.parallax = function() {
 
 //ability navigation
 contitech.navigation = function() {
-    $('.ability-nav a').on('click', function(event) {
-        $('.ability-nav a').removeClass('active');
-        $(this).addClass('active')
-        var ability = $(this).attr('data-ability');
-        $('html, body').animate({
-            scrollTop: $('#' + ability + '-ability').offset().top
-        }, 1000);
-        event.preventDefault();
-    })
-}
-//auto-update navigation on scroll
+        $('.ability-nav a').on('click', function(event) {
+            $('.ability-nav a').removeClass('active');
+            $(this).addClass('active')
+            var ability = $(this).attr('data-ability');
+            $('html, body').animate({
+                scrollTop: $('#' + ability + '-ability').offset().top
+            }, 1000);
+            event.preventDefault();
+        })
+    }
+    //auto-update navigation on scroll
 contitech.updateNavigation = function(e) {
     $('.ability-nav').show();
-    var ability = e.target.triggerElement().id.replace('-ability','')
+    var ability = e.target.triggerElement().id.replace('-ability', '')
     $('.ability-nav a').removeClass('active');
-    $('.ability-nav a[data-ability="'+ability+'"]').addClass('active')
+    $('.ability-nav a[data-ability="' + ability + '"]').addClass('active')
 }
-contitech.hideNavigation = function(e){
+contitech.hideNavigation = function(e) {
     $('.ability-nav').hide();
+}
+
+contitech.floatability = function(){
+    
 }

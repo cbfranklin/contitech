@@ -20,6 +20,8 @@
   "devDependencies": {
     "chai": "~3.2.0",
     "mocha": "~2.2.5",
-    "gsap": "~1.17.0"
+    "gsap": "~1.17.0",
+    "wowjs": "~1.1.2",
+    "mustache": "~2.1.3"
   }
 }
