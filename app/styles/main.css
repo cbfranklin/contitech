@@ -125,6 +125,7 @@ b{
 section{
   overflow:hidden;
   position:relative;
+  margin-bottom:15%;
 }
 .ability-float{
   position:fixed;
@@ -191,6 +192,10 @@ section .background {
   top:-80%;
   background-position:top center;
   background-size:auto 100%;
+  opacity:0;
+}
+section:first-child .background{
+  opacity:1;
 }
 
 
