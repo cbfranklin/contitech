@@ -10,7 +10,7 @@ $(function() {
 
 //init
 contitech.init = function() {
-    contitech.loadAbilities(content);
+    contitech.loadSections(content);
     contitech.getWindowHeight();
     contitech.parallax();
     contitech.navigation();
@@ -31,19 +31,34 @@ contitech.getWindowHeight = function() {
     contitech.setSectionHeight()
 }
 
-contitech.loadAbilities = function(content) {
+contitech.loadSections = function(content) {
     var template = $('#templates .ability').html();
     var rendered = Mustache.render(template, content);
     $('#discover-ability').after(rendered);
     $('.content-carousel').each(function() {
         $(this).find('.item').eq(0).addClass('active')
     })
-    contitech.abilities = ['add-more-ability', 'discover-ability'];
+    contitech.sections = [{
+        el: 'add-more-ability',
+        nav: false
+    }, {
+        el: 'discover-ability',
+        nav: false
+    }];
     for (var i in content) {
-        contitech.abilities.push(content[i].prefix + '-ability')
+        contitech.sections.push({
+            el: content[i].prefix + '-ability',
+            nav: true
+        })
     }
-    contitech.abilities.push('what-ability')
-    contitech.abilities.push('contact')
+    contitech.sections.push({
+        el: 'what-ability',
+        nav: false
+    })
+    contitech.sections.push({
+        el: 'contact',
+        nav: false
+    })
 }
 
 //set section heights to screen height
@@ -55,194 +70,54 @@ contitech.setSectionHeight = function() {
 
 //parallax
 contitech.parallax = function() {
-    this.controller = new ScrollMagic.Controller({
+    contitech.parallax.controller = new ScrollMagic.Controller({
         globalSceneOptions: {
-            triggerHook: "onEnter",
-            duration: "200%"
+            duration: '125%',
+            tweenChanges: true
         }
     });
-    /*contitech.parallax.tween = {};
-    var obj = contitech.abilities;
-    console.log(obj)
-    for (var i in obj) {
-        if (i == 0) {
-            console.log('first')
-            contitech.parallax.tween[obj[i]] = new ScrollMagic.Scene({
-                    triggerElement: '#' + obj[i]
-                })
-                .setTween('#' + obj[i] + ' .background', {
-                    //opacity: "100",
-                    y: "80%",
-                    ease: Linear.easeInOut
-                })
-                .addIndicators()
-                .addTo(this.controller)
-                //.on('enter', contitech.updateNavigation);
-        } else if (i == obj.length - 1) {
-            console.log('last')
-            contitech.parallax.tween[obj[i]] = new ScrollMagic.Scene({
-                    triggerElement: '#' + obj[i]
-                })
-                .setTween('#' + obj[i] + ' .background', {
-                    y: "80%",
-                    //opacity: "100",
-                    ease: Linear.easeInOut
-                })
-                .setTween('#' + obj[i - 1] + ' .background', {
-                    opacity: "0",
-                    ease: Linear.easeInOut
-                })
-                .addIndicators()
-                .addTo(this.controller)
-                //.on('enter', contitech.updateNavigation);
-        } else {
-            console.log('other')
-            contitech.parallax.tween[obj[i]] = new ScrollMagic.Scene({
-                    triggerElement: '#' + obj[i] + ' .background'
-                })
-                .setTween('#' + obj[i] + ' .background', {
-                    y: "80%",
-                    //opacity: "100",
-                    ease: Linear.easeInOut
-                })
-                /*.setTween('#' + obj[i + 1] + ' .background', {
-                    opacity: "0",
-                    ease: Linear.easeInOut
-                })
-                .setTween('#' + obj[i - 1] + ' .background', {
-                    opacity: "0",
-                    ease: Linear.easeInOut
-                })
-                .addIndicators()
-                .addTo(this.controller)
-                //.on('enter', contitech.updateNavigation);
-        }
-    }*/
-        new ScrollMagic.Scene({
-                triggerElement: "#add-more-ability"
+    contitech.parallax.scene = {};
+    $.each(contitech.sections, function(i, val) {
+        var el = val.el;
+        var nav = val.nav;
+        var opacityTween = TweenMax.to('#' + el + ' .background', 0.6, {
+            opacity: 1,
+        });
+        contitech.parallax.scene[el] = new ScrollMagic.Scene({
+                triggerElement: '#' + el,
+                triggerHook: "onEnter"
             })
-            .setTween("#add-more-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.hideNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#discover-ability"
-            })
-            .setTween("#discover-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.hideNavigation);
-
-
-
-
- 
-        new ScrollMagic.Scene({
-                triggerElement: "#account-ability"
-            })
-            .setTween("#account-ability .background", {
-                y: "80%",
+            .setTween("#" + el + " .background", {
+                y: "40%",
                 ease: Linear.easeInOut
             })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#assure-ability"
+            .on("enter", function(event) {
+                opacityTween.play();
+                //yTween.play()
+                console.log('play ' + el)
             })
-            .setTween("#assure-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#expand-ability"
-            })
-            .setTween("#expand-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
+            .on("leave", function(event) {
+                opacityTween.reverse();
+                //yTween.play()
+                console.log('reverse ' + el)
             })
             .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
+            .addTo(contitech.parallax.controller);
 
-        new ScrollMagic.Scene({
-                triggerElement: "#knowledge-ability"
-            })
-            .setTween("#knowledge-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
+        if (nav) {
+            contitech.parallax.scene[el].on('enter', contitech.updateNavigation);
+        } else {
+            contitech.parallax.scene[el].on('enter', contitech.hideNavigation);
+        }
+    })
+    contitech.parallax.scene['ability-pin'] = new ScrollMagic.Scene({
+            triggerElement: '#discover-ability em',
+            triggerHook: 'onCenter'
+        })
+        .setPin('#discover-ability em')
+        .addIndicators()
+        .addTo(contitech.parallax.controller);
 
-        new ScrollMagic.Scene({
-                triggerElement: "#protect-ability"
-            })
-            .setTween("#protect-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#sustain-ability"
-            })
-            .setTween("#sustain-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#target-ability"
-            })
-            .setTween("#target-ability .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.updateNavigation);
-
-
-
-
-
-        new ScrollMagic.Scene({
-                triggerElement: "#what-ability"
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.hideNavigation);
-
-        new ScrollMagic.Scene({
-                triggerElement: "#contact"
-            })
-            .setTween("#contact .background", {
-                y: "80%",
-                ease: Linear.easeNone
-            })
-            .addIndicators()
-            .addTo(this.controller)
-            .on('enter', contitech.hideNavigation);
-      
 }
 
 //ability navigation
@@ -268,4 +143,4 @@ contitech.hideNavigation = function(e) {
     $('.ability-nav').hide();
 }
 
-contitech.abilities = []
+contitech.sections = []

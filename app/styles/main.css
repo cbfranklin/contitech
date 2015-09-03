@@ -146,6 +146,15 @@ section em,
   font-style: normal;
   font-weight: lighter;
 }
+.ability-hidden{
+  font-style: normal;
+  font-weight: lighter;
+  display:inline-block;
+  opacity:0;
+}
+.prefix{
+  display:inline-block;
+}
 section > div{
   position:absolute;
   height:100%;
@@ -195,7 +204,7 @@ section .background {
   opacity:0;
 }
 section:first-child .background{
-  opacity:1;
+  opacity:0;
 }
 
 
