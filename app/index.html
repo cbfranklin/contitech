@@ -42,32 +42,30 @@
             </div>
         </div>
     </div>
-    <div class="ability-nav">
-        <ul>
-            <li><a href="#" data-ability="account">Account<em>ability</em></a></li>
-            <li><a href="#" data-ability="assure">Assure<em>ability</em></a></li>
-            <li><a href="#" data-ability="expand">Expand<em>ability</em></a></li>
-            <li><a href="#" data-ability="knowledge">Knowledge<em>ability</em></a></li>
-            <li><a href="#" data-ability="protect">Protect<em>ability</em></a></li>
-            <li><a href="#" data-ability="sustain">Sustain<em>ability</em></a></li>
-            <li><a href="#" data-ability="target">Target<em>ability</em></a></li>
-        </ul>
-    </div>
+    <div id="nav-ability"></div>
+    <div id="sticky-ability"><div class="h2"><em>ability</em></div></div>
     <div class="sections">
         <section id="add-more-ability">
             <div class="background"></div>
             <div class="content">
                 <h1>add more <em>ability</em></h1>
                 <p><b>We’re taking ability next level.</b> From industry specific applications, products, support and service, ContiTech brings added abilities to your business to meet your unique needs, enhance efficiencies and take your success next level.</p>
+                <br>
+                <p id="scroll-for-more-ability"><b>scroll for more ability</b><br><span class="glyphicon glyphicon-chevron-down wow flipInX"></span></p>
             </div>
         </section>
         <section id="discover-ability">
             <div class="background"></div>
-            <div class="content">
-                <div class="row content-header">
-                    <h2>Discover<em>ability</em></h2>
+           <div class="content">
+                    <div class="row content-header">
+                        <div class="col-md-6">
+                            <div class="h2"><div class="prefix wow fadeInUp" data-wow-duration="1.5s">discover</div><div class="ability-hidden">ability</div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <p><b>Suspendisse dis parturient montes velit pur.</b> Nam arcu turpis, tis eget, pellentesque nec urna. Morbi at imperdiet ante, ac luctus tellus. Nullam ultrices quam ut arcu vestibulum cursus. Suspendisse id ornare massa.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
         </section>
         <!-- content goes here -->
         <section id="what-ability">
@@ -108,22 +106,22 @@
     </div>
     </div>
     <div id="templates">
-        <script type="text/template" class="ability">
+        <script type="text/template" class="template-ability">
             {{#.}}
             <section id="{{prefix}}-ability">
                 <div class="background" style="background-image:url({{background}})"></div>
                 <div class="content">
-                    <div class="row content-header wow fadeInUp" data-wow-delay="500">
+                    <div class="row content-header">
                         <div class="col-md-6">
-                            <h2><div class="prefix">{{prefix}}</div><div class="ability-hidden">ability</div></h2>
+                            <h2><div class="prefix wow fadeInUp" data-wow-duration="1.5s">{{prefix}}</div><div class="ability-hidden">ability</div></h2>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 content-header-copy wow fadeInUp" data-wow-delay="0.75s">
                             <p>{{{copy}}}</p>
                         </div>
                     </div>
-                    <div class="row content-carousel wow fadeInUp">
+                    <div class="row content-carousel wow fadeInUp" data-wow-delay="0.75s">
                         <div class="col-md-12">
-                        {{#carousel}}
+                            {{#carousel}}
                             <div id="{{prefix}}-ability-carousel" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="item">
@@ -134,8 +132,7 @@
                                             </div>
                                             <div class="carousel-pdf">
                                                 {{#pdf}}
-                                                <a target="_blank" href="{{url}}"><img src="{{thumbnail}}" /></a>{{title}}
-                                                {{/pdf}}
+                                                <a target="_blank" href="{{url}}"><img src="{{thumbnail}}" /></a>{{title}} {{/pdf}}
                                             </div>
                                         </div>
                                         <div class="col-md-5 carousel-image">
@@ -152,6 +149,13 @@
                 </div>
             </section>
             {{/.}}
+        </script>
+        <script type="text/template" class="nav-ability">
+            <ul>
+            {{#.}}
+            <li><a href="#" data-ability="{{prefix}}">{{prefix}}<em>ability</em></a></li>
+            {{/.}}
+        </ul>
         </script>
     </div>
     <script src="data/content.js"></script>

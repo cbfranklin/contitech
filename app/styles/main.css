@@ -31,7 +31,7 @@ b{
   width:100%;
   z-index:1000;
 }
-.ability-nav{
+#nav-ability{
   position:fixed;
   right:0;
   top:200px;
@@ -39,20 +39,21 @@ b{
   z-index:3;
   display:none;
 }
-.ability-nav li{
+#nav-ability li{
   list-style: none;
   padding-top:20px;
   font-weight:bold;
+  text-transform: capitalize;
 }
-.ability-nav em{
+#nav-ability em{
   font-style: normal;
   font-weight:lighter;
   color:#777;
 }
-.ability-nav a.active em{
+#nav-ability a.active em{
   color:#e6a530;
 }
-.ability-nav a.active{
+#nav-ability a.active{
   color:#e6a530;
 }
 .logo{
@@ -71,8 +72,6 @@ b{
   right:30px;
   top:0px;
   text-align: right;
-  background:#000;
-  background:rgba(0,0,0,0.75);
   padding:15px;
   z-index:1001;
 }
@@ -119,29 +118,37 @@ b{
   width:100%;
   z-index:1000;
   padding-top:15px;
-  background:#000;
-  background:rgba(0,0,0,0.75);
+
+
 }
 section{
   overflow:hidden;
   position:relative;
-  margin-bottom:15%;
 }
-.ability-float{
+#sticky-ability{
   position:fixed;
-  z-index:999;
+  z-index:2;
   display:none;
 }
-section h2,
-.ability-float h2{
+#scroll-for-more-ability{
+  cursor:pointer;
+}
+#scroll-for-more-ability .glyphicon-chevron-down{
+  font-size:30px;
+  color:#e6a530;
+}
+h2,
+.h2{
   font-size:45px;
   text-align:right;
   width:100%;
-  margin-top:50px;
-  /*text-transform: capitalize;*/
+}
+h2 .prefix,
+.h2 .prefix{
+  text-transform: capitalize;
 }
 section em,
-.ability-float em{
+#sticky-ability em{
   color:#e6a530;
   font-style: normal;
   font-weight: lighter;
@@ -163,14 +170,15 @@ section > div{
   left:0;
 }
 section .content{
-  z-index:2;
+  z-index:3;
   width:80%;
 }
 section .content-header{
   border-bottom:1px solid #666;
-  margin:100px 10% 0px 10%;
+  margin:150px 10% 0px 10%;
   padding-bottom:15px;
 }
+
 .carousel-inner{
   padding:20px 10%;
 }
@@ -227,29 +235,6 @@ section:first-child .background{
 #discover-ability .background{
   background:url(../images/backgrounds/discover-ability.jpg);
 }
-/*
-#account-ability .background{
-  background:url(../images/backgrounds/account-ability.jpg);
-}
-#assure-ability .background{
-  background:url(../images/backgrounds/assure-ability.jpg);
-}
-#expand-ability .background{
-  background:url(../images/backgrounds/expand-ability.jpg);
-}
-#knowledge-ability .background{
-  background:url(../images/backgrounds/knowledge-ability.jpg);
-}
-#protect-ability .background{
-  background:url(../images/backgrounds/protect-ability.jpg);
-}
-#sustain-ability .background{
-  background:url(../images/backgrounds/sustain-ability.jpg);
-}
-#target-ability .background{
-  background:url(../images/backgrounds/target-ability.jpg);
-}
 #contact .background{
   background:url(../images/backgrounds/contact.jpg);
 }
-*/
