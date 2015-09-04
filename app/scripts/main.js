@@ -12,15 +12,16 @@ $(function() {
 contitech.init = function() {
     contitech.loadSections(content);
     contitech.getWindowDimensions();
-    contitech.parallax();
     contitech.navigation();
-    contitech.getWindowDimensions();
+    contitech.parallax();
+    contitech.WOW = new WOW().init();
     contitech.setStickyAbility();
+    contitech.whatAbility();
     $(window).on('resize', function() {
         contitech.getWindowDimensions();
         contitech.setStickyAbility();
     })
-    new WOW().init();
+
 }
 
 //get screen height, set to refresh on resize
@@ -34,7 +35,7 @@ contitech.getWindowDimensions = function() {
     contitech.setSectionHeight();
 }
 
-contitech.setStickyAbility = function(){
+contitech.setStickyAbility = function() {
     $('#sticky-ability').css({
         left: $('#discover-ability .ability-hidden').offset().left,
         top: $('#discover-ability .ability-hidden').offset().top - $('#discover-ability').offset().top - 40
@@ -58,28 +59,28 @@ contitech.loadSections = function(content) {
 
     contitech.sections = [{
         el: 'add-more-ability',
-        nav: false,
+        navAbility: false,
         stickyAbility: false
     }, {
         el: 'discover-ability',
-        nav: false,
+        navAbility: true,
         stickyAbility: true
     }];
     for (var i in content) {
         contitech.sections.push({
             el: content[i].prefix + '-ability',
-            nav: true,
+            navAbility: true,
             stickyAbility: true
         })
     }
     contitech.sections.push({
         el: 'what-ability',
-        nav: false,
+        navAbility: false,
         stickyAbility: false
     })
     contitech.sections.push({
         el: 'contact',
-        nav: false,
+        navAbility: false,
         stickyAbility: false
     })
 }
@@ -101,7 +102,7 @@ contitech.parallax = function() {
     contitech.parallax.scene = {};
     $.each(contitech.sections, function(i, val) {
         var el = val.el;
-        var nav = val.nav;
+        var navAbility = val.navAbility;
         var stickyAbility = val.stickyAbility;
         var opacityTween = TweenMax.to('#' + el + ' .background', 0.6, {
             opacity: 1,
@@ -128,54 +129,56 @@ contitech.parallax = function() {
             })
             .addIndicators()
             .addTo(contitech.parallax.controller);
-
-        if (nav) {
+        if (el === 'what-ability') {
+             contitech.parallax.scene[el].on('enter', $('#blank').focus());
+        }
+        if(el === 'add-more-ability'){
+            contitech.parallax.scene[el].on('enter', contitech.resetWOW());
+        }
+        if (navAbility) {
             contitech.parallax.scene[el].on('enter', contitech.updateNavigation);
         } else {
             contitech.parallax.scene[el].on('enter', contitech.hideNavigation);
         }
 
         if (stickyAbility) {
-            if(el === 'discover-ability'){
-                 contitech.parallax.scene[el].on('enter', contitech.showStickyAbility);
-            }
-            else{
+            if (el === 'discover-ability') {
+                contitech.parallax.scene[el].on('enter', contitech.showStickyAbility);
+            } else {
                 contitech.parallax.scene[el].on('enter', contitech.showStickyAbility);
             }
         } else {
             contitech.parallax.scene[el].on('enter', contitech.hideStickyAbility);
         }
     })
-    /*contitech.parallax.scene['ability-pin'] = new ScrollMagic.Scene({
-            triggerElement: '#discover-ability .ability',
-            offset: contitech.windowDimensions.height * 0.222,
-            duration: $('.sections').height(),
-            reverse: true
-        })
-        .setPin('#discover-ability .ability')
-        .addIndicators()
-        .addTo(contitech.parallax.controller);*/
 
 }
-contitech.showStickyAbility = function(){
+contitech.showStickyAbility = function() {
     $('#sticky-ability').show()
 }
-contitech.hideStickyAbility = function(){
-    $('#sticky-ability').hide()
-}
-//ability navigation
+contitech.hideStickyAbility = function() {
+        $('#sticky-ability').hide()
+    }
+    //ability navigation
 contitech.navigation = function() {
         $('#nav-ability a').on('click', function(event) {
+            $(this).addClass('animated pulse');
+            setTimeout(function() {
+                    $(this).removeClass('animated pulse')
+                },
+                1000);
             $('#nav-ability a').removeClass('active');
             $(this).addClass('active')
             var ability = $(this).attr('data-ability');
-            $('html, body').animate({
-                scrollTop: $('#' + ability + '-ability').offset().top
-            }, 1000);
+            if (ability === "discover") {
+                _scrollTo($('#discover-ability'), 20)
+            } else {
+                _scrollTo($('#' + ability + '-ability'))
+            }
             event.preventDefault();
         })
-        $('#scroll-for-more-ability').on('click',function(){
-             $('html, body').animate({
+        $('#scroll-for-more-ability').on('click', function() {
+            $('html, body').animate({
                 scrollTop: $('#discover-ability').offset().top + 20
             }, 1000);
         })
@@ -188,11 +191,55 @@ contitech.updateNavigation = function(e) {
     $('#nav-ability a[data-ability="' + ability + '"]').addClass('active')
 }
 contitech.hideNavigation = function(e) {
-    $('#nav-ability').hide();
+    $('#nav-ability').hide()
 }
 
-contitech.resetWow = function(){
-    new WOW().init();
+contitech.resetWOW = function() {
+    $('.wow').each(function(){
+        $(this).removeClass('animated');
+        $(this).removeAttr('style');
+    })
+    contitech.WOW = new WOW().init();
 }
 
-contitech.sections = []
+contitech.whatAbility = function() {
+    $('#blank').val('');
+    $('#blank').on('keyup', function() {
+        console.log('keyup')
+        _delay(feedback, 500)
+
+        function feedback() {
+            console.log('feedbackkeyup')
+            if ($('#blank').val() !== '') {
+                setTimeout(function() {
+                    $('#blank-ability em').addClass('animated pulse');
+                    setTimeout(function() {
+                        $('#blank-ability em').removeClass('animated pulse');
+                    }, 1000)
+                }, 500)
+                $('#blank').addClass('animated pulse')
+                setTimeout(function() {
+                    $('#blank').removeClass('animated pulse')
+                }, 1000)
+            }
+
+        }
+    })
+}
+
+var _scrollTo = function($el, offsetTop) {
+    if (!offsetTop) {
+        offsetTop = 0;
+    }
+    $('html, body').animate({
+        scrollTop: $el.offset().top + offsetTop
+    }, 1000);
+}
+
+var _delay = (function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout(timer);
+        timer = setTimeout(callback, ms);
+    };
+})();

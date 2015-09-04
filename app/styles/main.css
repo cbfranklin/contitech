@@ -4,6 +4,10 @@ body {
   background:#000;
   color:#fff;
 }
+input,
+textarea{
+  color:#000;
+}
 h1,h2,h3,h4,h5,p,ul{
   padding:0;
   margin:0;
@@ -14,7 +18,7 @@ p{
 a{
   color:#fff;
 }
-a:hover,a:active{
+a:hover,a:active,a:focus{
   color:#e6a530!important;
 }
 b{
@@ -34,7 +38,7 @@ b{
 #nav-ability{
   position:fixed;
   right:0;
-  top:200px;
+  top:135px;
   width:20%;
   z-index:3;
   display:none;
@@ -80,6 +84,7 @@ b{
   left:30px;
   top:0px;
   width:100%;
+  height:75px;
 }
 .footer-contitech-logo{
   text-align:right;
@@ -87,6 +92,13 @@ b{
 .footer-nav li,
 .footer-nav a{
   color:#999;
+}
+.small-nav a{
+  padding:5px;
+}
+.small-nav a:hover{
+  background:#000;
+  background:rgba(0,0,0,0.75);
 }
 .small-nav{
   font-size:0.8em;
@@ -117,9 +129,8 @@ b{
   left:0;
   width:100%;
   z-index:1000;
-  padding-top:15px;
-
-
+  padding:15px;
+  background:rgba(0,0,0,0.5);
 }
 section{
   overflow:hidden;
@@ -137,6 +148,12 @@ section{
   font-size:30px;
   color:#e6a530;
 }
+h2 a,
+.h2 a,
+h3 a,
+.h3 a{
+  color:#e6a530;
+}
 h2,
 .h2{
   font-size:45px;
@@ -146,6 +163,18 @@ h2,
 h2 .prefix,
 .h2 .prefix{
   text-transform: capitalize;
+}
+h3,
+.h3{
+  color:#e6a530;
+  font-size:14px;
+  font-weight:bold;
+}
+h4{
+  font-weight:bold;
+  font-size:24px;
+  color:#e6a530;
+  padding:10px 0;
 }
 section em,
 #sticky-ability em{
@@ -171,11 +200,15 @@ section > div{
 }
 section .content{
   z-index:3;
-  width:80%;
+  width:75%;
 }
-section .content-header{
+.content-carousel{
+  background: rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 90px 32px rgba(0,0,0,0.5);
+}
+.content-header{
   border-bottom:1px solid #666;
-  margin:150px 10% 0px 10%;
+  margin-top:150px;
   padding-bottom:15px;
 }
 
@@ -214,7 +247,34 @@ section .background {
 section:first-child .background{
   opacity:0;
 }
-
+input#blank{
+  background:transparent;
+  border:none;
+  text-align: right;
+  color:#fff;
+}
+#blank-ability{
+  font-size:32px;
+  text-align:right;
+}
+#blank-ability em{
+  display:inline-block;
+  position:relative;
+}
+#blank{
+  min-width:10px;
+}
+#form-ability input:not(#blank){
+  width:100%;
+}
+#form-ability textarea{
+  width:100%;
+  height:50%;
+}
+#form-ability label{
+  text-align: right;
+  width:100%;
+}
 
 /* SECTIONS */
 
@@ -238,3 +298,30 @@ section:first-child .background{
 #contact .background{
   background:url(../images/backgrounds/contact.jpg);
 }
+
+.btn-ability {
+  background-color: #e6a530;
+  border-color: #e6a530;
+  color:rgba(0,0,0,0.75)!important;
+}
+.btn-ability:hover,
+.btn-ability:focus,
+.btn-ability:active,
+.btn-ability.active {
+  background-color: #e19b1b;
+  border-color: #cb8b18;
+}
+.btn-ability.disabled:hover,
+.btn-ability.disabled:focus,
+.btn-ability.disabled:active,
+.btn-ability.disabled.active,
+.btn-ability[disabled]:hover,
+.btn-ability[disabled]:focus,
+.btn-ability[disabled]:active,
+.btn-ability[disabled].active,
+fieldset[disabled] .btn-ability:hover,
+fieldset[disabled] .btn-ability:focus,
+fieldset[disabled] .btn-ability:active,
+fieldset[disabled] .btn-ability.active {
+  background-color: #e6a530;
+  border-color: #e6a530;}
