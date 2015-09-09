@@ -60,6 +60,27 @@ b{
 #nav-ability a.active{
   color:#e6a530;
 }
+#left-hand-ability{
+  position:fixed;
+  height:100%;
+  top:150px;
+  left:6%;
+  z-index:4;
+  opacity:0.1;
+  width:25%;
+  overflow:hidden;
+}
+#left-hand-ability li{
+  padding:2%;
+  font-weight:bold;
+  font-size:40px;
+  list-style:none;
+  text-transform: capitalize;
+}
+#left-hand-ability em{
+  font-weight:lighter;
+  font-style: normal
+}
 .logo{
   background:#e6a530;
   width:270px;
@@ -138,7 +159,7 @@ section{
 }
 #sticky-ability{
   position:fixed;
-  z-index:2;
+  z-index:3;
   display:none;
 }
 #scroll-for-more-ability{
@@ -199,7 +220,7 @@ section > div{
   left:0;
 }
 section .content{
-  z-index:3;
+  z-index:4;
   width:75%;
 }
 .content-carousel{
@@ -325,3 +346,13 @@ fieldset[disabled] .btn-ability:active,
 fieldset[disabled] .btn-ability.active {
   background-color: #e6a530;
   border-color: #e6a530;}
+
+.no-select,
+.no-select * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
