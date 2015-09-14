@@ -75,7 +75,7 @@ b{
   top:150px;
   left:6%;
   z-index:4;
-  opacity:0.1;
+  opacity:0.075;
   overflow:hidden;
   width:50%;
 }
@@ -96,6 +96,7 @@ b{
   height:110px;
   z-index:1002;
   position:relative;
+  left:6%;
 }
 .logo img{
   margin-top:30px;
@@ -150,6 +151,9 @@ b{
 }
 .small-nav li:last-child:after{
   display:none;
+}
+.footer-nav p {
+  padding-left:5px;
 }
 
 .footer{
@@ -232,27 +236,31 @@ section .content{
   z-index:4;
   width:75%;
 }
-.content-carousel{
+.swiper-container{
   background: rgba(0,0,0,0.5);
   box-shadow: 0px 0px 90px 32px rgba(0,0,0,0.5);
+  margin:20px auto 0px auto!important;
 }
 .content-header{
   border-bottom:1px solid #666;
   margin-top:150px;
   padding-bottom:15px;
 }
-
+.swiper-slide{
+  padding:5%;
+}
 .carousel-inner{
   padding:20px 10%;
 }
 .carousel-image{
   text-align: right
 }
-.carousel-control{
-  font-size:80px;
+.carousel-image img{
+  max-width:100%;
+  height:auto;
 }
-.carousel{
-  height:400px;
+.carousel-copy{
+  padding:10px;
 }
 .carousel-copy h3{
   font-size:12px;
@@ -262,31 +270,20 @@ section .content{
 .carousel-copy p{
   font-size:10px;
 }
+.carousel-pdf{
+  display:inline-block;
+  padding:10px;
+  font-size:10px;
+}
 .carousel-pdf img{
   padding:5px;
 }
-.parallax-background {
-  z-index:1;
-  height:200%;
-  position:absolute;
-  top:-80%;
-  background-repeat: no-repeat;
-  background-position:center top;
-  background-size:auto 100%;
-  opacity:0;
+.carousel-pdf-title{
+  display:block;
+  text-align:center;
 }
-.parallax-foreground {
-  z-index:2;
-  position:absolute;
-  opacity:0;
-  top:-20%;
-  background-repeat: no-repeat;
-  background-position:right center;
-  background-size:auto 100%;
-}
-section:first-child .parallax-background{
-  opacity:0;
-}
+
+
 input#blank{
   background:transparent;
   border:none;
@@ -317,13 +314,48 @@ input#blank{
 }
 
 /* SECTIONS */
+.parallax-background {
+  z-index:1;
+  height:200%;
+  position:absolute;
+  top:-80%;
+  background-repeat: no-repeat;
+  background-position:center top;
+  background-size:auto 100%;
+  opacity:0;
+}
+.parallax-foreground {
+  z-index:2;
+  position:absolute;
+  opacity:0;
+  top:-20%;
+  background-repeat: no-repeat;
+  background-position:right center;
+  background-size:auto 100%;
+}
+#add-more-ability .parallax-background{
+  opacity:0;
+}
 
 #add-more-ability .parallax-background{
   background-image:url(../images/parallax/background/add-more-ability.jpg);
+  background-size:100% auto;
 }
 #add-more-ability .parallax-foreground{
-  background-image:url(../images/parallax/foreground/add-more-ability.jpg);
+  background-image:url(../images/parallax/foreground/add-more-ability.png);
+  background-size:100% auto;
 }
+#discover-ability .parallax-background{
+  background-image:url(../images/parallax/background/discover-ability.jpg);
+  background-size:100% auto;
+  top:-30%;
+}
+#discover-ability .parallax-foreground{
+  background-image:url(../images/parallax/foreground/discover-ability-alt.png);
+  background-size:100% auto;
+  top:0;
+}
+
 #add-more-ability .content{
   width:80%;
   padding-top:20%;
@@ -333,12 +365,6 @@ input#blank{
 #add-more-ability .content h1{
   font-weight: lighter;
   font-size:90px;
-}
-#discover-ability .parallax-background{
-  background:url(../images/parallax/background/discover-ability.jpg);
-}
-#discover-ability .parallax-foreground{
-  background:url(../images/parallax/foreground/discover-ability.jpg);
 }
 
 .btn-ability {
@@ -376,4 +402,73 @@ fieldset[disabled] .btn-ability.active {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.menu-toggle {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right:10px;
+    top: 8px;
+    z-index: 2002;
+}
+
+.svg-menu-toggle {
+    fill: #000;
+    pointer-events: all;
+    cursor: pointer;
+    height: 100%;
+}
+
+.svg-menu-toggle .bar {
+    -webkit-transform: rotate(0) translateY(0) translateX(0);
+    transform: rotate(0) translateY(0) translateX(0);
+    opacity: 1;
+    -webkit-transform-origin: 20px 10px;
+    transform-origin: 20px 10px;
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+    transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.svg-menu-toggle .bar:nth-of-type(1) {
+    -webkit-transform-origin: 20px 10px;
+    transform-origin: 20px 10px;
+}
+
+.svg-menu-toggle .bar:nth-of-type(3) {
+    -webkit-transform-origin: 20px 20px;
+    transform-origin: 20px 20px;
+}
+
+.menu-toggle.active .svg-menu-toggle .bar:nth-of-type(1) {
+    -webkit-transform: rotate(-45deg) translateY(0) translateX(0);
+    transform: rotate(-45deg) translateY(0) translateX(0);
+}
+
+.menu-toggle.active .svg-menu-toggle .bar:nth-of-type(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .svg-menu-toggle .bar:nth-of-type(3) {
+    -webkit-transform: rotate(45deg) translateY(0em) translateX(0em);
+    transform: rotate(45deg) translateY(0em) translateX(0em);
+}
+
+.inline-svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-closer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1999;
+}
+
+.nav-open .nav-closer {
+    display: block;
 }

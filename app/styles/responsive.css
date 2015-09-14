@@ -1,23 +1,23 @@
 @media (max-width: 768px) {
     .header,
     .footer {
-        position: static;
+        position: relative;
     }
     #add-more-ability .content h1 {
         font-size: 60px;
     }
-    .content-header{
-    	margin-top:75px;
+    .content-header {
+        margin-top: 75px;
     }
     section .content {
         z-index: 4;
-        width: auto;
+        width: 100%;
     }
     #mobile-header {
         display: block;
     }
-    .header{
-    	display:none;
+    .header {
+        display: none;
     }
     .header .container {
         padding: 0;
@@ -25,14 +25,112 @@
     .logo {
         width: 100%;
         height: 50px;
+        left: 0;
     }
-    .logo img{
-    	height:25px;
-    	width:auto;
-    	margin-top: 12px;
-    	margin-left: 12px;
+    .logo img {
+        height: 25px;
+        width: auto;
+        margin-top: 12px;
+        margin-left: 12px;
     }
-    #left-hand-ability{
-    	display:none;
+    #left-hand-ability {
+        display: none;
+    }
+    .carousel-pdf img {
+        width: 50px;
+    }
+    #blank {
+        max-width: 200px;
+    }
+    #nav-ability {
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        z-index: 2002;
+        display: block!important;
+        max-height: 0;
+        overflow: hidden;
+        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.9);
+        -moz-transition: max-height 0.5s;
+        text-align: center;
+        border-bottom: 1px solid #e6a530;
+    }
+    #nav-ability.open {
+        max-height: 999px;
+        -moz-transition: max-height 0.5s;
+    }
+    #nav-ability li {
+        list-style: none;
+        font-weight: bold;
+        text-transform: capitalize;
+        width: 100%;
+        display: block;
+        height: 30px;
+        padding: 0;
+    }
+    #nav-ability h3 {
+        padding-top: 10px;
+    }
+    #nav-ability li a {
+        padding: 5px;
+        width: 100%;
+        display: block;
+        height: 100%;
+    }
+    #nav-ability em {
+        font-style: normal;
+        font-weight: lighter;
+        color: #777;
+    }
+    #nav-ability a.active em {
+        color: #e6a530;
+    }
+    #nav-ability a.active {
+        color: #e6a530;
+    }
+    section .content {
+        width: auto;
+        position: relative;
+    }
+    #add-more-ability .content {
+        width: auto;
+        left: 0;
+    }
+    #nav-abililty h3 {
+        margin: 10px 0 0 0!important;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-image {
+        display: none;
+    }
+    .footer{
+        border-top:1px solid #444;
+        padding-top:20px;
+    }
+    .small-nav li{
+        text-align: center;
+        height:30px;
+        padding:0;
+        width:100%;
+        display:block;
+    }
+    .small-nav li a{
+        display:block;
+        width:100%;
+        height:100%;
+    }
+    .small-nav p{
+        text-align: center;
+    }
+    .small-nav li:after {
+        content: '';
+        padding: 0;
+    }
+    .footer-contitech-logo{
+        text-align: center;
+        padding:10px;
     }
 }
