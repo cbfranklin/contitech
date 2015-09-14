@@ -35,6 +35,15 @@ b{
   width:100%;
   z-index:1000;
 }
+#mobile-header{
+  display:none;
+  width:100%;
+  height:50px;
+  background:#e6a530;
+  top:0;
+  left:0;
+  position:fixed;
+}
 #nav-ability{
   position:fixed;
   right:0;
@@ -67,8 +76,8 @@ b{
   left:6%;
   z-index:4;
   opacity:0.1;
-  width:25%;
   overflow:hidden;
+  width:50%;
 }
 #left-hand-ability li{
   padding:2%;
@@ -256,16 +265,26 @@ section .content{
 .carousel-pdf img{
   padding:5px;
 }
-section .background {
+.parallax-background {
   z-index:1;
   height:200%;
-  position:relative;
+  position:absolute;
   top:-80%;
-  background-position:top center;
+  background-repeat: no-repeat;
+  background-position:center top;
   background-size:auto 100%;
   opacity:0;
 }
-section:first-child .background{
+.parallax-foreground {
+  z-index:2;
+  position:absolute;
+  opacity:0;
+  top:-20%;
+  background-repeat: no-repeat;
+  background-position:right center;
+  background-size:auto 100%;
+}
+section:first-child .parallax-background{
   opacity:0;
 }
 input#blank{
@@ -299,8 +318,11 @@ input#blank{
 
 /* SECTIONS */
 
-#add-more-ability .background{
-  background-image:url(../images/backgrounds/add-more-ability.jpg);
+#add-more-ability .parallax-background{
+  background-image:url(../images/parallax/background/add-more-ability.jpg);
+}
+#add-more-ability .parallax-foreground{
+  background-image:url(../images/parallax/foreground/add-more-ability.jpg);
 }
 #add-more-ability .content{
   width:80%;
@@ -312,12 +334,11 @@ input#blank{
   font-weight: lighter;
   font-size:90px;
 }
-
-#discover-ability .background{
-  background:url(../images/backgrounds/discover-ability.jpg);
+#discover-ability .parallax-background{
+  background:url(../images/parallax/background/discover-ability.jpg);
 }
-#contact .background{
-  background:url(../images/backgrounds/contact.jpg);
+#discover-ability .parallax-foreground{
+  background:url(../images/parallax/foreground/discover-ability.jpg);
 }
 
 .btn-ability {

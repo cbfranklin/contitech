@@ -1,16 +1,38 @@
-@media (max-width: 768px){
-
-
-.header,.footer{
-	position:static;
-}
-.ability-nav{
-	display:none!important;
-}
-h1{
-	font-size:30px;
-}
-h2{
-	font-size:20px;
-}
+@media (max-width: 768px) {
+    .header,
+    .footer {
+        position: static;
+    }
+    #add-more-ability .content h1 {
+        font-size: 60px;
+    }
+    .content-header{
+    	margin-top:75px;
+    }
+    section .content {
+        z-index: 4;
+        width: auto;
+    }
+    #mobile-header {
+        display: block;
+    }
+    .header{
+    	display:none;
+    }
+    .header .container {
+        padding: 0;
+    }
+    .logo {
+        width: 100%;
+        height: 50px;
+    }
+    .logo img{
+    	height:25px;
+    	width:auto;
+    	margin-top: 12px;
+    	margin-left: 12px;
+    }
+    #left-hand-ability{
+    	display:none;
+    }
 }

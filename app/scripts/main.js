@@ -32,6 +32,7 @@ conti.getWindowDimensions = function() {
         height: height + 1
     };
     conti.setSectionHeight();
+    conti.updateNavigation();
 };
 conti.setStickyAbility = function() {
     'use strict';
@@ -104,7 +105,10 @@ conti.parallax = function() {
         var el = val.el;
         var navAbility = val.navAbility;
         var stickyAbility = val.stickyAbility;
-        var opacityTween = TweenMax.to('#' + el + ' .background', 0.6, {
+        var backgroundOpacityTween = TweenMax.to('#' + el + ' .parallax-background', 0.6, {
+            opacity: 1
+        });
+        var foregroundOpacityTween = TweenMax.to('#' + el + ' .parallax-foreground', 0.6, {
             opacity: 1
         });
         conti.parallax.scene[el] = new ScrollMagic.Scene({
@@ -112,16 +116,22 @@ conti.parallax = function() {
             triggerHook: 'onEnter',
             duration: '125%',
             offset: '10%'
-        }).setTween('#' + el + ' .background', {
-            y: '40%',
+        }).setTween('#' + el + ' .parallax-background', {
+            y: '20%',
+            ease: Linear.easeInOut
+        }).setTween('#' + el + ' .parallax-foreground', {
+            y: '20%',
             ease: Linear.easeInOut
         }).on('enter', function() {
-            opacityTween.play(); //yTween.play()
+            backgroundOpacityTween.play();
+            foregroundOpacityTween.play();
         }).on('leave', function() {
-            opacityTween.reverse();
-            //yTween.play()
+            backgroundOpacityTween.reverse();
+            foregroundOpacityTween.reverse();
             conti.advanceList($('#left-hand-ability'));
-        }).addIndicators().addTo(conti.parallax.controller);
+        })
+       //.addIndicators()
+        .addTo(conti.parallax.controller);
         if (el === 'what-ability') {
             conti.parallax.scene[el].on('enter', function() {
                 console.log('setting focus to #blank');
@@ -181,8 +191,15 @@ conti.navigation = function() {
 //auto-update navigation on scroll
 conti.updateNavigation = function(e) {
     'use strict';
-    $('#nav-ability').show();
-    var ability = e.target.triggerElement().id.replace('-ability', '');
+    if(conti.windowDimensions.width > 768){
+        $('#nav-ability').show();
+    }
+    else{
+        $('#nav-ability').hide();
+    }
+    if(e){
+        var ability = e.target.triggerElement().id.replace('-ability', '');
+    }
     $('#nav-ability a').removeClass('active');
     $('#nav-ability a[data-ability="' + ability + '"]').addClass('active');
 };

@@ -42,17 +42,20 @@
             </div>
         </div>
     </div>
-    <div id="nav-ability" class="no-select">
+    <div id="mobile-header" class="no-select">
+        <div class="logo">
+            <img src="images/continental-logo.png" />
+        </div>
     </div>
-    <div id="left-hand-ability" class="no-select">
-        
-    </div>
+    <div id="nav-ability" class="no-select"></div>
+    <div id="left-hand-ability" class="no-select"></div>
     <div id="sticky-ability">
         <div class="h2"><em>ability</em></div>
     </div>
     <div class="sections">
         <section id="add-more-ability">
-            <div class="background"></div>
+            <div class="parallax-background"></div>
+            <div class="parallax-foreground"></div>
             <div class="content container">
                 <h1>add more <em>ability</em></h1>
                 <p><b>We’re taking ability next level.</b> From industry specific applications, products, support and service, ContiTech brings added abilities to your business to meet your unique needs, enhance efficiencies and take your success next level.</p>
@@ -62,7 +65,8 @@
             </div>
         </section>
         <section id="discover-ability">
-            <div class="background"></div>
+            <div class="parallax-background"></div>
+            <div class="parallax-foreground"></div>
             <div class="content container">
                 <div class="row content-header">
                     <div class="col-sm-6">
@@ -178,7 +182,10 @@
         <script type="text/template" class="template-ability">
             {{#.}}
             <section id="{{prefix}}-ability">
-                <div class="background" style="background-image:url({{background}})"></div>
+                {{#parallax}}
+                <div class="parallax-background" style="background-image:url({{background}})"></div>
+                <div class="parallax-foreground" style="background-image:url({{foreground}})"></div>
+                {{/parallax}}
                 <div class="content container">
                     <div class="row content-header">
                         <div class="col-sm-6">
@@ -228,12 +235,12 @@
             </ul>
         </script>
         <script type="text/template" class="left-hand-ability">
-        <div class="container">
-            <ul>
-                {{#.}}
-                <li><a href="#" data-ability="{{prefix}}">{{prefix}}<em>ability</em></a></li>
-                {{/.}}
-            </ul>
+            <div class="container">
+                <ul>
+                    {{#.}}
+                    <li><a href="#" data-ability="{{prefix}}">{{prefix}}<em>ability</em></a></li>
+                    {{/.}}
+                </ul>
             </div>
         </script>
     </div>
