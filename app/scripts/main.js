@@ -1,5 +1,5 @@
 // jshint devel:true
-/* global $,WOW,Mustache,ScrollMagic,TweenMax,Linear,content */
+/* global $,Mustache,ScrollMagic,TweenMax,Linear,content */
 var conti = {};
 //doc ready
 $(function() {
@@ -9,13 +9,12 @@ $(function() {
 //init
 conti.init = function() {
     'use strict';
-    conti.scrollTo($('#add-more-ability'), 0, 0);
+    //conti.scrollTo($('#add-more-ability'), 0, 0);
     conti.loadSections(content);
     conti.getWindowDimensions();
+    conti.setStickyAbility();
     conti.navigation();
     conti.parallax();
-    conti.WOW = new WOW().init();
-    conti.setStickyAbility();
     conti.whatAbility();
     $(window).on('resize', function() {
         conti.getWindowDimensions();
@@ -156,23 +155,43 @@ conti.parallax = function() {
     });
     conti.parallax.scene = {
         foreground: {},
-        background: {}
+        background: {},
+        content: {}
     };
     $.each(conti.sections, function(i, val) {
         var el = val.el;
         var navAbility = val.navAbility;
         var stickyAbility = val.stickyAbility;
+
+        //set up tweens
         var backgroundOpacityTween = TweenMax.to('#' + el + ' .parallax-background', 0.6, {
-            opacity: 1
-        });
-        var foregroundOpacityTween = TweenMax.to('#' + el + ' .parallax-foreground', 0.6, {
-            opacity: 1
-        });
+                opacity: 1
+            }),
+            foregroundOpacityTween = TweenMax.to('#' + el + ' .parallax-foreground', 0.6, {
+                opacity: 1
+            }),
+            prefixTween = TweenMax.to('#' + el + ' .prefix', 1, {
+                opacity: 1,
+                y: '-=20',
+                delay: 0.5
+            }),
+            contentHeaderCopyTween = TweenMax.to('#' + el + ' .content-header-copy', 0.5, {
+                opacity: 1,
+                y: '-=20',
+                delay: 1.5
+            }),
+            swiperContainerTween = TweenMax.to('#' + el + ' .swiper-container', 0.5, {
+                opacity: 1,
+                y: '-=20',
+                delay: 1.5
+            });
+
+        //parallax background scene
         conti.parallax.scene.background[el] = new ScrollMagic.Scene({
                 triggerElement: '#' + el,
                 triggerHook: 0.1,
                 duration: '125%',
-                offset: '0'
+                offset: '0.1'
             }).setTween('#' + el + ' .parallax-background', {
                 y: '20%',
                 ease: Linear.easeInOut
@@ -180,16 +199,15 @@ conti.parallax = function() {
                 backgroundOpacityTween.play();
             }).on('leave', function() {
                 backgroundOpacityTween.reverse();
-                conti.advanceList($('#left-hand-ability'));
             })
             //.addIndicators()
             .addTo(conti.parallax.controller);
-
+        //parallax foreground scene
         conti.parallax.scene.foreground[el] = new ScrollMagic.Scene({
                 triggerElement: '#' + el,
                 triggerHook: 'onEnter',
                 duration: '125%',
-                offset: '0.1'
+                offset: '0'
             })
             .setTween('#' + el + ' .parallax-foreground', {
                 y: '20%',
@@ -201,29 +219,42 @@ conti.parallax = function() {
                 foregroundOpacityTween.reverse();
             })
             .addTo(conti.parallax.controller);
+        //parallax section content scene
+        conti.parallax.scene.content[el] = new ScrollMagic.Scene({
+            triggerElement: '#' + el,
+            triggerHook: 0.01,
+            duration: '125%',
+            offset: '0.1'
+        }).on('enter', function() {
+            prefixTween.play();
+            contentHeaderCopyTween.play();
+            swiperContainerTween.play();
+            //conti.advanceList($('#left-hand-ability'));
+        }).on('leave', function() {
+            //prefixTween.reverse();
+            //contentHeaderCopyTween.reverse();
+            //swiperContainerTween.reverse();
+        }).addTo(conti.parallax.controller);
 
         if (el === 'what-ability') {
-            conti.parallax.scene.background[el].on('enter', function() {
+            conti.parallax.scene.content[el].on('enter', function() {
                 document.getElementById('blank').select();
                 $('#blank').click();
             });
         }
-        if (el === 'add-more-ability') {
-            conti.parallax.scene.background[el].on('enter', conti.resetWOW);
-        }
         if (navAbility) {
-            conti.parallax.scene.background[el].on('enter', conti.updateNavigation);
+            conti.parallax.scene.content[el].on('enter', conti.updateNavigation);
         } else {
-            conti.parallax.scene.background[el].on('enter', conti.hideNavigation);
+            conti.parallax.scene.content[el].on('enter', conti.hideNavigation);
         }
         if (stickyAbility) {
             if (el === 'discover-ability') {
-                conti.parallax.scene.background[el].on('enter', conti.showStickyAbility);
+                conti.parallax.scene.content[el].on('enter', conti.showStickyAbility);
             } else {
-                conti.parallax.scene.background[el].on('enter', conti.showStickyAbility);
+                conti.parallax.scene.content[el].on('enter', conti.showStickyAbility);
             }
         } else {
-            conti.parallax.scene.background[el].on('enter', conti.hideStickyAbility);
+            conti.parallax.scene.content[el].on('enter', conti.hideStickyAbility);
         }
     });
 };
@@ -282,14 +313,6 @@ conti.hideNavigation = function() {
         $('#nav-ability').hide();
     }
 };
-conti.resetWOW = function() {
-    'use strict';
-    $('.wow').each(function() {
-        $(this).removeClass('animated');
-        $(this).removeAttr('style');
-    });
-    conti.WOW = new WOW().init();
-};
 conti.whatAbility = function() {
     'use strict';
 
@@ -310,7 +333,7 @@ conti.whatAbility = function() {
     }
     $('#blank').val('');
     $('#blank').on('keyup', function() {
-        conti.delay(feedback, 500);
+        conti.delay(feedback, 1000);
     });
 };
 conti.advanceList = function($el) {
