@@ -275,8 +275,8 @@ conti.parallax = function() {
         } else {
             conti.parallax.scene.foreground[el].on('enter', conti.hideStickyAbility);
         }
-        //}
     });
+    conti.parallax.scene.foreground['add-more-ability'].on('enter', conti.hideNavigation);
     /*$('.prefix,.swiper-container,.content-header-copy').css({
         'opacity': '0',
         'transform': 'translateY(20px)'
