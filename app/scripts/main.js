@@ -1,5 +1,5 @@
 // jshint devel:true
-/* global $,Mustache,ScrollMagic,TweenMax,Linear,content */
+/* global $,WOW,Mustache,ScrollMagic,TweenMax,Linear,content */
 var conti = {};
 //doc ready
 $(function() {
@@ -16,6 +16,7 @@ conti.init = function() {
     conti.navigation();
     conti.parallax();
     conti.whatAbility();
+    conti.WOW = new WOW().init();
     $(window).on('resize', function() {
         conti.getWindowDimensions();
         conti.setStickyAbility();
@@ -172,22 +173,49 @@ conti.parallax = function() {
             }),
             foregroundOpacityTween = TweenMax.to('#' + el + ' .parallax-foreground', 0.6, {
                 opacity: 1
-            }),
-            prefixTween = TweenMax.to('#' + el + ' .prefix', 1, {
-                opacity: 1,
-                y: '-=20',
-                delay: 0.5
-            }),
-            contentHeaderCopyTween = TweenMax.to('#' + el + ' .content-header-copy', 0.5, {
-                opacity: 1,
-                y: '-=20',
-                delay: 1.5
-            }),
-            swiperContainerTween = TweenMax.to('#' + el + ' .swiper-container', 0.5, {
-                opacity: 1,
-                y: '-=20',
-                delay: 1.5
-            });
+            })
+            /*,
+                        prefixTween = TweenMax.to('#' + el + ' .prefix', 1, {
+                            opacity: 1,
+                            y: '-=20',
+                            delay: 0.5
+                        }),
+                        contentHeaderCopyTween = TweenMax.to('#' + el + ' .content-header-copy', 0.5, {
+                            opacity: 1,
+                            y: '-=20',
+                            delay: 1.5
+                        }),
+                        swiperContainerTween = TweenMax.to('#' + el + ' .swiper-container', 0.5, {
+                            opacity: 1,
+                            y: '-=20',
+                            delay: 1.5
+                        })*/
+        ;
+
+
+        //parallax foreground scene
+
+        conti.parallax.scene.foreground[el] = new ScrollMagic.Scene({
+            triggerElement: '#' + el,
+            triggerHook: 'onEnter',
+            duration: '125%',
+            offset: '0'
+        })
+
+        /*.on('enter', function() {
+            foregroundOpacityTween.play();
+        }).on('leave', function() {
+            foregroundOpacityTween.reverse();
+        })*/
+        //.addIndicators()
+
+        .addTo(conti.parallax.controller);
+        if (el !== 'add-more-ability') {
+            conti.parallax.scene.foreground[el].setTween('#' + el + ' .parallax-foreground', {
+                y: '20%',
+                ease: Linear.easeInOut
+            })
+        }
 
         //parallax background scene
         conti.parallax.scene.background[el] = new ScrollMagic.Scene({
@@ -200,31 +228,14 @@ conti.parallax = function() {
                 ease: Linear.easeInOut
             })
             .on('enter', function(e) {
-                backgroundOpacityTween.play();
+                //backgroundOpacityTween.play();
                 conti.updateCurrentScene(e);
             }).on('leave', function() {
-                backgroundOpacityTween.reverse();
+                //backgroundOpacityTween.reverse();
             })
             //.addIndicators()
             .addTo(conti.parallax.controller);
-        //parallax foreground scene
-        conti.parallax.scene.foreground[el] = new ScrollMagic.Scene({
-                triggerElement: '#' + el,
-                triggerHook: 'onEnter',
-                duration: '125%',
-                offset: '0'
-            })
-            .setTween('#' + el + ' .parallax-foreground', {
-                y: '20%',
-                ease: Linear.easeInOut
-            })
-            /*.on('enter', function() {
-                foregroundOpacityTween.play();
-            }).on('leave', function() {
-                foregroundOpacityTween.reverse();
-            })*/
-            //.addIndicators()
-            .addTo(conti.parallax.controller);
+
         //parallax section content scene
         conti.parallax.scene.content[el] = new ScrollMagic.Scene({
                 triggerElement: '#' + el,
@@ -232,16 +243,19 @@ conti.parallax = function() {
                 //duration: '110%',
                 //offset: '-10'
             }).on('enter', function() {
-                prefixTween.play();
-                contentHeaderCopyTween.play();
-                swiperContainerTween.play();
-                //conti.advanceList($('#left-hand-ability'));
+                //console.log('enter')
+                //prefixTween.play();
+                //contentHeaderCopyTween.play();
+                //swiperContainerTween.play();
+                conti.advanceList($('#left-hand-ability'));
             }).on('leave', function() {
-                prefixTween.reverse();
-                contentHeaderCopyTween.reverse();
-                swiperContainerTween.reverse();
+                //console.log('leave')
+                //prefixTween.reverse();
+                //contentHeaderCopyTween.reverse();
+                //swiperContainerTween.reverse();
             })
-            .addIndicators().addTo(conti.parallax.controller);
+            //.addIndicators()
+            .addTo(conti.parallax.controller);
 
         if (el === 'what-ability') {
             conti.parallax.scene.foreground[el].on('enter', function() {
@@ -255,15 +269,18 @@ conti.parallax = function() {
             conti.parallax.scene.content[el].on('enter', conti.hideNavigation);
         }
         if (stickyAbility) {
-            if (el === 'discover-ability') {
-                conti.parallax.scene.foreground[el].on('enter', conti.showStickyAbility);
-            } else {
+            if (el !== 'discover-ability') {
                 conti.parallax.scene.foreground[el].on('enter', conti.showStickyAbility);
             }
         } else {
             conti.parallax.scene.foreground[el].on('enter', conti.hideStickyAbility);
         }
+        //}
     });
+    /*$('.prefix,.swiper-container,.content-header-copy').css({
+        'opacity': '0',
+        'transform': 'translateY(20px)'
+    })*/
 };
 conti.showStickyAbility = function() {
     'use strict';
@@ -320,6 +337,7 @@ conti.hideNavigation = function() {
         $('#nav-ability').hide();
     }
 };
+
 conti.whatAbility = function() {
     'use strict';
 
@@ -377,29 +395,30 @@ conti.delay = function() {
         timer = setTimeout(callback, ms);
     };
 }();
-/*conti.isAutoScrolling = false;
-console.log(false)
-conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
-conti.currentScene = '';
 conti.updateCurrentScene = function(e) {
-    conti.currentScene = $('#' + e.target.triggerElement().id);
-    console.log(conti.currentScene)
-}
-conti.scrollAdjust = function(e) {
-    console.log('scrollAdjust')
-    var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
-    var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
-    if (conti.isAutoScrolling === false && sceneScrollPercentage < 20 && conti.windowDimensions.width > 768) {
-        conti.scrollTo(conti.currentScene, 0, 500)
+        conti.currentScene = $('#' + e.target.triggerElement().id);
+        console.log(conti.currentScene)
     }
-}
-$.fn.scrollStopped = function(callback) {
-        var that = this,
-            $this = $(that);
-        $this.scroll(function(ev) {
-            clearTimeout($this.data('scrollTimeout'));
-            $this.data('scrollTimeout', setTimeout(callback.bind(that), 250, ev));
-        });
+    /*conti.isAutoScrolling = false;
+    console.log(false)
+    conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
+    conti.currentScene = '';
 
-};
-*/
+    conti.scrollAdjust = function(e) {
+        console.log('scrollAdjust')
+        var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
+        var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
+        if (conti.isAutoScrolling === false && sceneScrollPercentage < 20 && conti.windowDimensions.width > 768) {
+            conti.scrollTo(conti.currentScene, 0, 500)
+        }
+    }
+    $.fn.scrollStopped = function(callback) {
+            var that = this,
+                $this = $(that);
+            $this.scroll(function(ev) {
+                clearTimeout($this.data('scrollTimeout'));
+                $this.data('scrollTimeout', setTimeout(callback.bind(that), 250, ev));
+            });
+
+    };
+    */

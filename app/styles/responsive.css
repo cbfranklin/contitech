@@ -133,4 +133,8 @@
         text-align: center;
         padding:10px;
     }
+    h2,.h2
+    {
+        font-size:40px;
+    }
 }
