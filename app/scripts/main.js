@@ -20,6 +20,9 @@ conti.init = function() {
         conti.getWindowDimensions();
         conti.setStickyAbility();
     });
+    /*$(window).scrollStopped(function() {
+        conti.delay(conti.scrollAdjust, 1000);
+    })*/
 };
 //get screen height, set to refresh on resize
 conti.getWindowDimensions = function() {
@@ -55,7 +58,7 @@ conti.loadSections = function(content) {
     $('#nav-ability').html(rendered);
     //left-hand treatment
     template = $('#templates .left-hand-ability').html();
-    rendered = Mustache.render(template, content);
+    rendered = Mustache.render(template, conti.leftHandAbilities);
     $('#left-hand-ability').html(rendered);
     conti.sections = [{
         el: 'add-more-ability',
@@ -195,8 +198,10 @@ conti.parallax = function() {
             }).setTween('#' + el + ' .parallax-background', {
                 y: '20%',
                 ease: Linear.easeInOut
-            }).on('enter', function() {
+            })
+            .on('enter', function(e) {
                 backgroundOpacityTween.play();
+                conti.updateCurrentScene(e);
             }).on('leave', function() {
                 backgroundOpacityTween.reverse();
             })
@@ -213,31 +218,33 @@ conti.parallax = function() {
                 y: '20%',
                 ease: Linear.easeInOut
             })
-            .on('enter', function() {
+            /*.on('enter', function() {
                 foregroundOpacityTween.play();
             }).on('leave', function() {
                 foregroundOpacityTween.reverse();
-            })
+            })*/
+            //.addIndicators()
             .addTo(conti.parallax.controller);
         //parallax section content scene
         conti.parallax.scene.content[el] = new ScrollMagic.Scene({
-            triggerElement: '#' + el,
-            triggerHook: 0.01,
-            duration: '125%',
-            offset: '0.1'
-        }).on('enter', function() {
-            prefixTween.play();
-            contentHeaderCopyTween.play();
-            swiperContainerTween.play();
-            //conti.advanceList($('#left-hand-ability'));
-        }).on('leave', function() {
-            //prefixTween.reverse();
-            //contentHeaderCopyTween.reverse();
-            //swiperContainerTween.reverse();
-        }).addTo(conti.parallax.controller);
+                triggerElement: '#' + el,
+                triggerHook: '0.25',
+                //duration: '110%',
+                //offset: '-10'
+            }).on('enter', function() {
+                prefixTween.play();
+                contentHeaderCopyTween.play();
+                swiperContainerTween.play();
+                //conti.advanceList($('#left-hand-ability'));
+            }).on('leave', function() {
+                prefixTween.reverse();
+                contentHeaderCopyTween.reverse();
+                swiperContainerTween.reverse();
+            })
+            .addIndicators().addTo(conti.parallax.controller);
 
         if (el === 'what-ability') {
-            conti.parallax.scene.content[el].on('enter', function() {
+            conti.parallax.scene.foreground[el].on('enter', function() {
                 document.getElementById('blank').select();
                 $('#blank').click();
             });
@@ -249,12 +256,12 @@ conti.parallax = function() {
         }
         if (stickyAbility) {
             if (el === 'discover-ability') {
-                conti.parallax.scene.content[el].on('enter', conti.showStickyAbility);
+                conti.parallax.scene.foreground[el].on('enter', conti.showStickyAbility);
             } else {
-                conti.parallax.scene.content[el].on('enter', conti.showStickyAbility);
+                conti.parallax.scene.foreground[el].on('enter', conti.showStickyAbility);
             }
         } else {
-            conti.parallax.scene.content[el].on('enter', conti.hideStickyAbility);
+            conti.parallax.scene.foreground[el].on('enter', conti.hideStickyAbility);
         }
     });
 };
@@ -271,10 +278,10 @@ conti.navigation = function() {
     'use strict';
     $('#nav-ability a').on('click', function(event) {
         conti.mobileNav.close();
-        $(this).addClass('animated pulse');
+        /*$(this).addClass('animated pulse');
         setTimeout(function() {
             $(this).removeClass('animated pulse');
-        }, 1000);
+        }, 1000);*/
         $('#nav-ability a').removeClass('active');
         $(this).addClass('active');
         var ability = $(this).attr('data-ability');
@@ -347,6 +354,7 @@ conti.advanceList = function($el) {
 };
 conti.scrollTo = function($el, offsetTop, time) {
     'use strict';
+    //conti.isAutoScrolling = true;
     if (!offsetTop) {
         offsetTop = 0;
     }
@@ -355,7 +363,11 @@ conti.scrollTo = function($el, offsetTop, time) {
     }
     $('html, body').animate({
         scrollTop: $el.offset().top + offsetTop
-    }, 1000);
+    }, time);
+    /*setTimeout(function() {
+        conti.isAutoScrolling = false;
+        console.log(false)
+    }, time + 300)*/
 };
 conti.delay = function() {
     'use strict';
@@ -365,3 +377,29 @@ conti.delay = function() {
         timer = setTimeout(callback, ms);
     };
 }();
+/*conti.isAutoScrolling = false;
+console.log(false)
+conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
+conti.currentScene = '';
+conti.updateCurrentScene = function(e) {
+    conti.currentScene = $('#' + e.target.triggerElement().id);
+    console.log(conti.currentScene)
+}
+conti.scrollAdjust = function(e) {
+    console.log('scrollAdjust')
+    var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
+    var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
+    if (conti.isAutoScrolling === false && sceneScrollPercentage < 20 && conti.windowDimensions.width > 768) {
+        conti.scrollTo(conti.currentScene, 0, 500)
+    }
+}
+$.fn.scrollStopped = function(callback) {
+        var that = this,
+            $this = $(that);
+        $this.scroll(function(ev) {
+            clearTimeout($this.data('scrollTimeout'));
+            $this.data('scrollTimeout', setTimeout(callback.bind(that), 250, ev));
+        });
+
+};
+*/
