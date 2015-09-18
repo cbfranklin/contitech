@@ -20,10 +20,11 @@ conti.init = function() {
     $(window).on('resize', function() {
         conti.getWindowDimensions();
         conti.setStickyAbility();
+        conti.setNavDimensions();
     });
-    /*$(window).scrollStopped(function() {
+    $(window).scrollStopped(function() {
         conti.delay(conti.scrollAdjust, 1000);
-    })*/
+    })
 };
 //get screen height, set to refresh on resize
 conti.getWindowDimensions = function() {
@@ -44,6 +45,19 @@ conti.setStickyAbility = function() {
         top: $('#discover-ability .ability-hidden').offset().top - $('#discover-ability').offset().top - 40
     });
 };
+conti.setNavDimensions = function(){
+    if(conti.windowDimensions.width > 768){
+        var height = conti.windowDimensions.height - 135 - 100;
+        $('#nav-ability').css({
+            'height': height
+        })
+    }
+    else{
+        $('#nav-ability').css({
+            'height': ''
+        })
+    }
+}
 conti.loadSections = function(content) {
     'use strict';
     //sections
@@ -229,7 +243,7 @@ conti.parallax = function() {
             })
             .on('enter', function(e) {
                 //backgroundOpacityTween.play();
-                conti.updateCurrentScene(e);
+                //conti.updateCurrentScene(e);
             }).on('leave', function() {
                 //backgroundOpacityTween.reverse();
             })
@@ -242,12 +256,13 @@ conti.parallax = function() {
                 triggerHook: '0.25',
                 //duration: '110%',
                 //offset: '-10'
-            }).on('enter', function() {
+            }).on('enter', function(e) {
                 //console.log('enter')
                 //prefixTween.play();
                 //contentHeaderCopyTween.play();
                 //swiperContainerTween.play();
                 conti.advanceList($('#left-hand-ability'));
+                conti.updateCurrentScene(e);
             }).on('leave', function() {
                 //console.log('leave')
                 //prefixTween.reverse();
@@ -400,15 +415,16 @@ conti.updateCurrentScene = function(e) {
         console.log(conti.currentScene)
     }
     /*conti.isAutoScrolling = false;
-    console.log(false)
+    console.log(false)*/
     conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
     conti.currentScene = '';
 
     conti.scrollAdjust = function(e) {
-        console.log('scrollAdjust')
         var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
         var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
-        if (conti.isAutoScrolling === false && sceneScrollPercentage < 20 && conti.windowDimensions.width > 768) {
+        console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
+        if (sceneScrollPercentage < 0.25 && conti.windowDimensions.width > 768) {
+            console.log('scrollAdjust')
             conti.scrollTo(conti.currentScene, 0, 500)
         }
     }
@@ -417,8 +433,8 @@ conti.updateCurrentScene = function(e) {
                 $this = $(that);
             $this.scroll(function(ev) {
                 clearTimeout($this.data('scrollTimeout'));
-                $this.data('scrollTimeout', setTimeout(callback.bind(that), 250, ev));
+                $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
             });
 
     };
-    */
+    

@@ -43,14 +43,18 @@ b{
   top:0;
   left:0;
   position:fixed;
+  z-index:1001;
 }
 #nav-ability{
   position:fixed;
-  right:0;
+  right:2%;
+  width:18%;
   top:135px;
   width:20%;
   z-index:3;
   display:none;
+  overflow-y:auto;
+  overflow-x:hidden;
 }
 #nav-ability li{
   list-style: none;
