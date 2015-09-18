@@ -246,6 +246,12 @@ section .content{
   padding-bottom:15px;
   overflow:hidden;
 }
+.content-form{
+  text-align:left;
+}
+.content-form .row{
+  margin:10px 0;
+}
 .swiper-slide{
   padding:5%;
 }

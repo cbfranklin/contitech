@@ -22,9 +22,9 @@ conti.init = function() {
         conti.setStickyAbility();
         conti.setNavDimensions();
     });
-    $(window).scrollStopped(function() {
+    /*$(window).scrollStopped(function() {
         conti.delay(conti.scrollAdjust, 1000);
-    })
+    })*/
 };
 //get screen height, set to refresh on resize
 conti.getWindowDimensions = function() {
@@ -419,13 +419,18 @@ conti.updateCurrentScene = function(e) {
     conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
     conti.currentScene = '';
 
-    conti.scrollAdjust = function(e) {
+    /*conti.scrollAdjust = function(e) {
         var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
         var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
         console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
         if (sceneScrollPercentage < 0.25 && conti.windowDimensions.width > 768) {
             console.log('scrollAdjust')
-            conti.scrollTo(conti.currentScene, 0, 500)
+            if(conti.currentScene.attr('id') === 'discover-ability'){
+                conti.scrollTo(conti.currentScene, 20, 500)
+            }
+            else{
+                conti.scrollTo(conti.currentScene, 0, 500)
+            }
         }
     }
     $.fn.scrollStopped = function(callback) {
@@ -436,5 +441,5 @@ conti.updateCurrentScene = function(e) {
                 $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
             });
 
-    };
+    };*/
     
