@@ -5,6 +5,7 @@ var conti = {};
 $(function() {
     'use strict';
     conti.init();
+    
 });
 //init
 conti.init = function() {
