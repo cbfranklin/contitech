@@ -10,7 +10,10 @@ $(function() {
 conti.init = function() {
     'use strict';
     //conti.scrollTo($('#add-more-ability'), 0, 0);
-    conti.loadSections(content);
+    var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
+    $.getJSON(req, function(data) {
+        conti.loadSections(data);
+    });
     conti.getWindowDimensions();
     conti.setStickyAbility();
     conti.navigation();
@@ -45,14 +48,13 @@ conti.setStickyAbility = function() {
         top: $('#discover-ability .ability-hidden').offset().top - $('#discover-ability').offset().top - 40
     });
 };
-conti.setNavDimensions = function(){
-    if(conti.windowDimensions.width > 768){
+conti.setNavDimensions = function() {
+    if (conti.windowDimensions.width > 768) {
         var height = conti.windowDimensions.height - 135 - 100;
         $('#nav-ability').css({
             'height': height
         })
-    }
-    else{
+    } else {
         $('#nav-ability').css({
             'height': ''
         })
@@ -416,30 +418,29 @@ conti.updateCurrentScene = function(e) {
     }
     /*conti.isAutoScrolling = false;
     console.log(false)*/
-    conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
-    conti.currentScene = '';
+conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
+conti.currentScene = '';
 
-    /*conti.scrollAdjust = function(e) {
-        var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
-        var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
-        console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
-        if (sceneScrollPercentage < 0.25 && conti.windowDimensions.width > 768) {
-            console.log('scrollAdjust')
-            if(conti.currentScene.attr('id') === 'discover-ability'){
-                conti.scrollTo(conti.currentScene, 20, 500)
-            }
-            else{
-                conti.scrollTo(conti.currentScene, 0, 500)
-            }
+/*conti.scrollAdjust = function(e) {
+    var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
+    var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
+    console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
+    if (sceneScrollPercentage < 0.25 && conti.windowDimensions.width > 768) {
+        console.log('scrollAdjust')
+        if(conti.currentScene.attr('id') === 'discover-ability'){
+            conti.scrollTo(conti.currentScene, 20, 500)
+        }
+        else{
+            conti.scrollTo(conti.currentScene, 0, 500)
         }
     }
-    $.fn.scrollStopped = function(callback) {
-            var that = this,
-                $this = $(that);
-            $this.scroll(function(ev) {
-                clearTimeout($this.data('scrollTimeout'));
-                $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
-            });
+}
+$.fn.scrollStopped = function(callback) {
+        var that = this,
+            $this = $(that);
+        $this.scroll(function(ev) {
+            clearTimeout($this.data('scrollTimeout'));
+            $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
+        });
 
-    };*/
-    
+};*/
