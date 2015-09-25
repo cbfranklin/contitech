@@ -10,11 +10,16 @@ $(function() {
 conti.init = function() {
     'use strict';
     //conti.scrollTo($('#add-more-ability'), 0, 0);
+    conti.loadSections(content);
     /*var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
-    $.getJSON(req, function(data) {
-        conti.loadSections(data);
+    $.ajax({
+        dataType: "json",
+        url: req,
+        mimeType: "application/json",
+        success: function(data) {
+            conti.loadSections(data);
+        }
     });*/
-conti.loadSections(content);
     conti.getWindowDimensions();
     conti.setStickyAbility();
     conti.navigation();
@@ -28,10 +33,18 @@ conti.loadSections(content);
             conti.setNavDimensions();
         }, 1000);
     });
-    /*$(window).scrollStopped(function() {
+    $(window).scrollStopped(function() {
         conti.delay(conti.scrollAdjust, 1000);
-    })*/
+    })
 };
+conti.buttons = function(){
+    $('#button-contact').on('click',function(){
+        conti.scrollTo($('#contact'));
+    })
+    $('#button-what-ability').on('click',function(){
+        conti.scrollTo($('#what-ability'));
+    })
+}
 //get screen height, set to refresh on resize
 conti.getWindowDimensions = function() {
     'use strict';
@@ -259,17 +272,18 @@ conti.parallax = function() {
         conti.parallax.scene.content[el] = new ScrollMagic.Scene({
                 triggerElement: '#' + el,
                 triggerHook: '0.25',
-                //duration: '110%',
+                duration: '110%',
                 //offset: '-10'
             }).on('enter', function(e) {
-                //console.log('enter')
-                //prefixTween.play();
-                //contentHeaderCopyTween.play();
-                //swiperContainerTween.play();
+                console.log('enter')
+                    //prefixTween.play();
+                    //contentHeaderCopyTween.play();
+                    //swiperContainerTween.play();
                 conti.advanceList($('#left-hand-ability'));
                 conti.updateCurrentScene(e);
-            }).on('leave', function() {
+            }).on('leave', function(e) {
                 //console.log('leave')
+                //conti.updateCurrentScene(e);
                 //prefixTween.reverse();
                 //contentHeaderCopyTween.reverse();
                 //swiperContainerTween.reverse();
@@ -285,8 +299,10 @@ conti.parallax = function() {
         }
         if (navAbility) {
             conti.parallax.scene.content[el].on('enter', conti.updateNavigation);
+            //conti.parallax.scene.content[el].on('leave', conti.updateNavigation);
         } else {
             conti.parallax.scene.content[el].on('enter', conti.hideNavigation);
+            //conti.parallax.scene.content[el].on('leave', conti.hideNavigation);
         }
         if (stickyAbility) {
             if (el !== 'discover-ability') {
@@ -424,7 +440,11 @@ conti.updateCurrentScene = function(e) {
 conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
 conti.currentScene = '';
 
+<<<<<<< HEAD
 /*conti.scrollAdjust = function(e) {
+=======
+conti.scrollAdjust = function(e) {
+>>>>>>> f5beaa5a8f657a0609fd4a8422c670a6747079eb
     var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
     var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
     console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
@@ -446,4 +466,8 @@ $.fn.scrollStopped = function(callback) {
             $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
         });
 
+<<<<<<< HEAD
 };*/
+=======
+};
+>>>>>>> f5beaa5a8f657a0609fd4a8422c670a6747079eb
