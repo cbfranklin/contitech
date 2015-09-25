@@ -10,10 +10,11 @@ $(function() {
 conti.init = function() {
     'use strict';
     //conti.scrollTo($('#add-more-ability'), 0, 0);
-    var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
+    /*var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
     $.getJSON(req, function(data) {
         conti.loadSections(data);
-    });
+    });*/
+conti.loadSections(content);
     conti.getWindowDimensions();
     conti.setStickyAbility();
     conti.navigation();
@@ -21,9 +22,11 @@ conti.init = function() {
     conti.whatAbility();
     conti.WOW = new WOW().init();
     $(window).on('resize', function() {
-        conti.getWindowDimensions();
-        conti.setStickyAbility();
-        conti.setNavDimensions();
+        conti.delay(function(){
+            conti.getWindowDimensions();
+            conti.setStickyAbility();
+            conti.setNavDimensions();
+        }, 1000);
     });
     /*$(window).scrollStopped(function() {
         conti.delay(conti.scrollAdjust, 1000);
