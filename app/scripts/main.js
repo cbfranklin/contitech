@@ -440,11 +440,8 @@ conti.updateCurrentScene = function(e) {
 conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']
 conti.currentScene = '';
 
-<<<<<<< HEAD
 /*conti.scrollAdjust = function(e) {
-=======
 conti.scrollAdjust = function(e) {
->>>>>>> f5beaa5a8f657a0609fd4a8422c670a6747079eb
     var sceneViewportOffset = Math.abs(conti.currentScene.offset().top - $(window).scrollTop())
     var sceneScrollPercentage = sceneViewportOffset / conti.windowDimensions.height;
     console.log(conti.currentScene.attr('id'), sceneScrollPercentage)
@@ -466,8 +463,6 @@ $.fn.scrollStopped = function(callback) {
             $this.data('scrollTimeout', setTimeout(callback.bind(that), 1000, ev));
         });
 
-<<<<<<< HEAD
-};*/
-=======
+
 };
->>>>>>> f5beaa5a8f657a0609fd4a8422c670a6747079eb
+*/
