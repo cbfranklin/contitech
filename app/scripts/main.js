@@ -25,26 +25,33 @@ conti.init = function() {
     conti.navigation();
     conti.parallax();
     conti.whatAbility();
+    conti.buttons();
     conti.WOW = new WOW({
         mobile: false
     }).init();
     $(window).on('resize', function() {
         conti.delay(function() {
             conti.getWindowDimensions();
-            conti.setStickyAbility();
-            conti.setNavDimensions();
-        }, 1000);
+            conti.delay(function() {
+                conti.setStickyAbility();
+                conti.setNavDimensions();
+            }, 500)
+        }, 500);
     });
     $(window).scrollStopped(function() {
-        conti.delay(conti.scrollAdjust, 1000);
+        if (conti.windowDimensions.width > 768) {
+            conti.delay(conti.scrollAdjust, 1000);
+        }
     })
 };
 conti.buttons = function() {
-        $('#button-contact').on('click', function() {
+        $('#button-contact').on('click', function(e) {
             conti.scrollTo($('#contact'));
+            e.preventDefault();
         })
-        $('#button-what-ability').on('click', function() {
+        $('#button-what-ability').on('click', function(e) {
             conti.scrollTo($('#what-ability'));
+            e.preventDefault();
         })
     }
     //get screen height, set to refresh on resize
@@ -90,7 +97,7 @@ conti.loadSections = function(content) {
     $('#nav-ability').html(rendered);
     //left-hand treatment
     template = $('#templates .left-hand-ability').html();
-    conti.leftHandAbilities = conti.leftHandAbilities.concat(conti.leftHandAbilities) 
+    conti.leftHandAbilities = conti.leftHandAbilities.concat(conti.leftHandAbilities)
     rendered = Mustache.render(template, conti.leftHandAbilities);
     $('#left-hand-ability').html(rendered);
     conti.sections = [{
@@ -207,25 +214,25 @@ conti.parallax = function() {
             });
 
         conti.parallax.scene.leftHandAbility = new ScrollMagic.Scene({
-            triggerElement: 'body',
-            duration: '11844',
-            offset: '0',
-            tweenChanges: false
+                triggerElement: 'body',
+                duration: '11844',
+                offset: '0',
+                tweenChanges: false
 
-        }).setTween('#left-hand-ability', {
+            }).setTween('#left-hand-ability', {
                 y: '-=20%',
                 ease: Linear.easeInOut
             })
-        .addTo(conti.parallax.controller);
+            .addTo(conti.parallax.controller);
 
         //parallax foreground scene
         conti.parallax.scene.foreground[el] = new ScrollMagic.Scene({
-            triggerElement: '#' + el,
-            triggerHook: 'onEnter',
-            duration: '125%',
-            offset: '0'
-        })
-        .addTo(conti.parallax.controller);
+                triggerElement: '#' + el,
+                triggerHook: 'onEnter',
+                duration: '125%',
+                offset: '0'
+            })
+            .addTo(conti.parallax.controller);
         if (el !== 'add-more-ability') {
             conti.parallax.scene.foreground[el].setTween('#' + el + ' .parallax-foreground', {
                 y: '20%',
@@ -248,10 +255,10 @@ conti.parallax = function() {
 
 
 
-            conti.parallax.scene.background[el].on('enter', function(e) {
-                //conti.advanceList($('#left-hand-ability'));
-                conti.updateCurrentScene(e);
-            })
+        conti.parallax.scene.background[el].on('enter', function(e) {
+            //conti.advanceList($('#left-hand-ability'));
+            conti.updateCurrentScene(e);
+        })
 
         /*if (el === 'what-ability') {
             conti.parallax.scene.foreground[el].on('enter', function() {
@@ -330,7 +337,7 @@ conti.whatAbility = function() {
     'use strict';
 
     function feedback() {
-        if ($('#blank').val() !== '') {
+        if ($('#blank').val() !== '' && $('#blank').val() !== undefined) {
             setTimeout(function() {
                 $('#blank-ability em').addClass('animated pulse');
                 setTimeout(function() {

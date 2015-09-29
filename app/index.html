@@ -34,8 +34,8 @@
             </div>
             <div class="small-nav header-nav">
                 <ul>
-                    <li><a id="button-what-abilty" href="#">What ability do you need?</a></li>
-                    <li><a id="button-contact" href="#">Contact</a></li>
+                    <li><a id="button-what-abilty" href="#what-ability">What ability do you need?</a></li>
+                    <li><a id="button-contact" href="#contact">Contact</a></li>
                     <li><a target="_blank" href="http://veyance.com/Locator.aspx">Find a Local Distributor</a></li>
                 </ul>
             </div>
@@ -108,29 +108,30 @@
                 </div>
                 <div class="row content-form wow fadeInUp" data-wow-delay="0.75s">
                     <div class="col-sm-8 col-sm-offset-2">
-                        <form id="form-ability" action="" method="POST">
+                        <form id="form-ability" data-toggle="validator" action="">
                             <br>
                             <div class="col-sm-12">
                                 <div id="blank-ability" class="wow flipInX" data-wow-delay="1.5s" data-wow-duration="1.5s">
-                                    <input type="text" id="blank" />
+                                    <input type="text" required id="blank" />
                                     <em>ability</em>
                                 </div>
                                 <br><br>
-                                <div class="col-sm-12" id="content-form">
+                                <div class="col-sm-12" id="content-form" >
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="form-name">Your Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="width100" id="form-name" />
+                                            <input type="text" required class="width100" id="form-name" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="form-email">Email</label>
+                                            <label for="form-email" >Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input data-validation="email" type="text" class="width100" id="form-email" />
+                                            <input type="email" required type="text" class="width100" id="form-email" data-error="Please enter a valid email address."/>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -138,7 +139,7 @@
                                             <label for="form-let-us-know-here">Let us know here</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <textarea rows="10" class="width100"></textarea>
+                                            <textarea required rows="10" class="width100"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -189,7 +190,7 @@
                         <li><a target="_blank"  href="http://veyance.com/BuLandingPage.aspx?id=50">Power Transmission Products</a></li>
                         <li><a target="_blank"  href="http://veyance.com/bulandingpage.aspx?id=38">Rubber Track</a></li>
                     </ul>
-                    <p class="terms"><a href="http://veyance.com/terms.aspx">Full Terms and Conditions</a></p>
+                    <p class="terms"><a target="_blank" href="http://veyance.com/terms.aspx">Full Terms and Conditions</a></p>
                 </div>
                 <div class="col-md-2 footer-contitech-logo">
                     <img src="images/contitech-logo.png" />
@@ -247,7 +248,7 @@
             <div class="visible-xs-block visible-sm-block">
              <ul>
                 <br>
-                    <li><a id="button-what-abilty" href="#">What ability do you need?</a></li>
+                    <li><a id="button-what-ability" href="#">What ability do you need?</a></li>
                     <li><a id="button-contact" href="#">Contact</a></li>
                     <li><a target="_blank"  href="http://veyance.com/Locator.aspx">Find a Local Distributor</a></li>
                 </ul>
@@ -287,7 +288,7 @@
     <script src="/bower_components/swiper/dist/js/swiper.js"></script>
     <script src="/bower_components/mustache/mustache.js"></script>
     <script src="/bower_components/wowjs/dist/wow.js"></script>
-    <script src="/bower_components/jquery-form-validator/form-validator/jquery.form-validator.js"></script>
+    <script src="/bower_components/bootstrap-validator/dist/validator.js"></script>
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->
     <script src="data/content.js"></script>
