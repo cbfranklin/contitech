@@ -243,7 +243,7 @@ conti.parallax = function() {
                 y: '20%',
                 ease: Linear.easeInOut
             })
-            .addIndicators()
+            //.addIndicators()
             .addTo(conti.parallax.controller);
 
 
@@ -253,12 +253,12 @@ conti.parallax = function() {
                 conti.updateCurrentScene(e);
             })
 
-        if (el === 'what-ability') {
+        /*if (el === 'what-ability') {
             conti.parallax.scene.foreground[el].on('enter', function() {
                 document.getElementById('blank').select();
                 $('#blank').click();
             });
-        }
+        }*/
         if (navAbility) {
             conti.parallax.scene.background[el].on('enter', conti.updateNavigation);
         } else {
