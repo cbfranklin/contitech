@@ -31,13 +31,13 @@ conti.init = function() {
     }).init();
     //$(window).on('resize', function() {
     conti.debouncedResize(function() {
-        conti.delay(function() {
+        //conti.delay(function() {
             conti.getWindowDimensions();
             conti.delay(function() {
                 conti.setStickyAbility();
                 conti.setNavDimensions();
-            }, 1000)
-        }, 500);
+            }, 100)
+        //}, 500);
     });
     $(window).scrollStopped(function() {
         if (conti.windowDimensions.width > 768) {
