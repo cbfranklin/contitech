@@ -29,13 +29,14 @@ conti.init = function() {
     conti.WOW = new WOW({
         mobile: false
     }).init();
-    $(window).on('resize', function() {
+    //$(window).on('resize', function() {
+    conti.debouncedResize(function() {
         conti.delay(function() {
             conti.getWindowDimensions();
             conti.delay(function() {
                 conti.setStickyAbility();
                 conti.setNavDimensions();
-            }, 500)
+            }, 1000)
         }, 500);
     });
     $(window).scrollStopped(function() {
@@ -403,6 +404,8 @@ conti.scrollAdjust = function(e) {
         }
     }
 }
+
+conti.debouncedResize = function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,100)};return c};
 
 $.fn.scrollStopped = function(callback) {
     var that = this,
