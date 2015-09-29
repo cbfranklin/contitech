@@ -90,6 +90,7 @@ conti.loadSections = function(content) {
     $('#nav-ability').html(rendered);
     //left-hand treatment
     template = $('#templates .left-hand-ability').html();
+    conti.leftHandAbilities = conti.leftHandAbilities.concat(conti.leftHandAbilities) 
     rendered = Mustache.render(template, conti.leftHandAbilities);
     $('#left-hand-ability').html(rendered);
     conti.sections = [{
@@ -205,6 +206,17 @@ conti.parallax = function() {
                 opacity: 1
             });
 
+        conti.parallax.scene.leftHandAbility = new ScrollMagic.Scene({
+            triggerElement: 'body',
+            duration: '11844',
+            offset: '0',
+            tweenChanges: false
+
+        }).setTween('#left-hand-ability', {
+                y: '-=20%',
+                ease: Linear.easeInOut
+            })
+        .addTo(conti.parallax.controller);
 
         //parallax foreground scene
         conti.parallax.scene.foreground[el] = new ScrollMagic.Scene({
@@ -237,7 +249,7 @@ conti.parallax = function() {
 
 
             conti.parallax.scene.background[el].on('enter', function(e) {
-                conti.advanceList($('#left-hand-ability'));
+                //conti.advanceList($('#left-hand-ability'));
                 conti.updateCurrentScene(e);
             })
 
@@ -318,7 +330,6 @@ conti.whatAbility = function() {
     'use strict';
 
     function feedback() {
-        console.log('feedbackkeyup');
         if ($('#blank').val() !== '') {
             setTimeout(function() {
                 $('#blank-ability em').addClass('animated pulse');
@@ -337,7 +348,7 @@ conti.whatAbility = function() {
         conti.delay(feedback, 1000);
     });
 };
-conti.advanceList = function($el) {
+/*conti.advanceList = function($el) {
     'use strict';
     var prev = $($el).find('li:first-child');
     $.unique(prev).each(function(i) {
@@ -345,7 +356,7 @@ conti.advanceList = function($el) {
             $(this).appendTo(this.parentNode).slideDown();
         });
     });
-};
+};*/
 conti.scrollTo = function($el, offsetTop, time) {
     'use strict';
     //conti.isAutoScrolling = true;
@@ -369,7 +380,6 @@ conti.delay = function() {
 }();
 conti.updateCurrentScene = function(e) {
     conti.currentScene = $('#' + e.target.triggerElement().id);
-    console.log(conti.currentScene)
 }
 
 conti.leftHandAbilities = ['market', 'expand', 'adapt', 'credit', 'foresee', 'solve', 'account', 'profit', 'depend', 'support', 'affect', 'target', 'service', 'protect', 'assure', 'knowledge', 'deliver', 'trust', 'process', 'control', 'sustain']

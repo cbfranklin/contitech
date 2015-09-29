@@ -108,12 +108,14 @@
                 </div>
                 <div class="row content-form wow fadeInUp" data-wow-delay="0.75s">
                     <div class="col-sm-8 col-sm-offset-2">
-                        <form id="form-ability">
+                        <form id="form-ability" action="" method="POST">
+                            <br>
                             <div class="col-sm-12">
                                 <div id="blank-ability" class="wow flipInX" data-wow-delay="1.5s" data-wow-duration="1.5s">
                                     <input type="text" id="blank" />
                                     <em>ability</em>
                                 </div>
+                                <br><br>
                                 <div class="col-sm-12" id="content-form">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -128,7 +130,7 @@
                                             <label for="form-email">Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="width100" id="form-email" />
+                                            <input data-validation="email" type="text" class="width100" id="form-email" />
                                         </div>
                                     </div>
                                     <div class="row">
@@ -187,7 +189,7 @@
                         <li><a target="_blank"  href="http://veyance.com/BuLandingPage.aspx?id=50">Power Transmission Products</a></li>
                         <li><a target="_blank"  href="http://veyance.com/bulandingpage.aspx?id=38">Rubber Track</a></li>
                     </ul>
-                    <p class="terms">For full terms and conditions visit <a href="http://veyance.com/terms.aspx">http://veyance.com/terms.aspx</a></p>
+                    <p class="terms"><a href="http://veyance.com/terms.aspx">Full Terms and Conditions</a></p>
                 </div>
                 <div class="col-md-2 footer-contitech-logo">
                     <img src="images/contitech-logo.png" />
@@ -242,6 +244,15 @@
             {{/.}}
         </script>
         <script type="text/template" class="nav-ability">
+            <div class="visible-xs-block visible-sm-block">
+             <ul>
+                <br>
+                    <li><a id="button-what-abilty" href="#">What ability do you need?</a></li>
+                    <li><a id="button-contact" href="#">Contact</a></li>
+                    <li><a target="_blank"  href="http://veyance.com/Locator.aspx">Find a Local Distributor</a></li>
+                </ul>
+            <hr>
+        </div>
             <h3>
                 <a href="#" data-ability="discover">DISCOVER <em>ability </em><img height="25px" src="images/contitech-symbol-yellow.png"/></a>
             </h3>
@@ -276,6 +287,7 @@
     <script src="/bower_components/swiper/dist/js/swiper.js"></script>
     <script src="/bower_components/mustache/mustache.js"></script>
     <script src="/bower_components/wowjs/dist/wow.js"></script>
+    <script src="/bower_components/jquery-form-validator/form-validator/jquery.form-validator.js"></script>
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->
     <script src="data/content.js"></script>
