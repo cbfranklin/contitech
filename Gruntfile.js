@@ -197,7 +197,8 @@ module.exports = function (grunt) {
         '!<%= config.dist %>/images/temp/{,*/}*.*',
         '!<%= config.dist %>/images/parallax/{,*/}*.*',
           '<%= config.dist %>/styles/fonts/{,*/}*.*',
-          '<%= config.dist %>/*.{ico,png}'
+          '<%= config.dist %>/*.{ico,png}',
+          '!<%= config.dist %>/favicon.ico',
         ]
       }
     },
