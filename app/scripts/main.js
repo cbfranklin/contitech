@@ -9,6 +9,7 @@ $(function() {
 //init
 conti.init = function() {
     'use strict';
+    console.log('hey')
     //conti.scrollTo($('#add-more-ability'), 0, 0);
     //conti.loadSections(content);
     var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
