@@ -10,40 +10,40 @@ $(function() {
 conti.init = function() {
     'use strict';
     //conti.scrollTo($('#add-more-ability'), 0, 0);
-    conti.loadSections(content);
-    /*var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
+    //conti.loadSections(content);
+    var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
     $.ajax({
         dataType: "json",
         url: req,
         mimeType: "application/json",
         success: function(data) {
             conti.loadSections(data);
-        }
-    });*/
-    conti.getWindowDimensions();
-    conti.setStickyAbility();
-    conti.navigation();
-    conti.parallax();
-    conti.whatAbility();
-    conti.buttons();
-    conti.WOW = new WOW({
-        mobile: false
-    }).init();
-    //$(window).on('resize', function() {
-    conti.debouncedResize(function() {
-        //conti.delay(function() {
             conti.getWindowDimensions();
-            conti.delay(function() {
-                conti.setStickyAbility();
-                conti.setNavDimensions();
-            }, 100)
-        //}, 500);
-    });
-    $(window).scrollStopped(function() {
-        if (conti.windowDimensions.width > 768) {
-            conti.delay(conti.scrollAdjust, 1000);
+            conti.setStickyAbility();
+            conti.navigation();
+            conti.parallax();
+            conti.whatAbility();
+            conti.buttons();
+            conti.WOW = new WOW({
+                mobile: false
+            }).init();
+            //$(window).on('resize', function() {
+            conti.debouncedResize(function() {
+                //conti.delay(function() {
+                conti.getWindowDimensions();
+                conti.delay(function() {
+                        conti.setStickyAbility();
+                        conti.setNavDimensions();
+                    }, 100)
+                    //}, 500);
+            });
+            $(window).scrollStopped(function() {
+                if (conti.windowDimensions.width > 768) {
+                    conti.delay(conti.scrollAdjust, 1000);
+                }
+            })
         }
-    })
+    });
 };
 conti.buttons = function() {
         $('#button-contact').on('click', function(e) {
@@ -405,7 +405,13 @@ conti.scrollAdjust = function(e) {
     }
 }
 
-conti.debouncedResize = function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,100)};return c};
+conti.debouncedResize = function on_resize(c, t) {
+    onresize = function() {
+        clearTimeout(t);
+        t = setTimeout(c, 100)
+    };
+    return c
+};
 
 $.fn.scrollStopped = function(callback) {
     var that = this,
