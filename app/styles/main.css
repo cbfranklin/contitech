@@ -390,6 +390,9 @@ section .content {
 .carousel-copy p {
     font-size: 12px;
 }
+.carousel-copy b{
+    color:#fff;
+}
 
 .carousel-pdf {
     padding: 10px;
@@ -513,7 +516,7 @@ input#blank {
     background-repeat: no-repeat;
     background-position:bottom center;
 }
-#contact h2{
+#contact h2, #what-ability h2{
     text-align:left;
 }
 
