@@ -57,7 +57,7 @@ module.exports = function (grunt) {
       options: {
         notify: false,
         background: true,
-        ghostMode: true
+        ghostMode: false
       },
       livereload: {
         options: {
@@ -199,6 +199,7 @@ module.exports = function (grunt) {
           '<%= config.dist %>/styles/fonts/{,*/}*.*',
           '<%= config.dist %>/*.{ico,png}',
           '!<%= config.dist %>/favicon.ico',
+          '!<%= config.dist %>/images/content-background.jpg',
         ]
       }
     },

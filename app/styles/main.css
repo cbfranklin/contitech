@@ -410,8 +410,8 @@ input#blank {
 }
 
 #add-more-ability, #what-ability, #contact{
-    z-index:11;
-    background:#000;
+    z-index:12;
+    background-color:#000;
 }
 
 #blank-ability {
@@ -493,6 +493,13 @@ input#blank {
     background-image: url(../images/parallax/foreground/discover-ability-alt.png);
     background-size: 100% auto;
     top: -170px;
+}
+
+#contact{
+    background-image: url(../images/contact-background.jpg);
+    background-size: 60% auto;
+    background-repeat: no-repeat;
+    background-position:bottom center;
 }
 
 #add-more-ability .content {
