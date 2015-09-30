@@ -250,11 +250,18 @@ section {
     z-index: 10;
 }
 
-#scroll-for-more-ability {
+#scroll-for-more-ability,
+#back-to-top {
     cursor: pointer;
+    text-align:center;
 }
 
-#scroll-for-more-ability .glyphicon-chevron-down {
+#back-to-top{
+    padding-top:100px;
+}
+
+#scroll-for-more-ability .glyphicon-chevron-down,
+#back-to-top .glyphicon-chevron-up{
     font-size: 30px;
     color: #e6a530;
 }

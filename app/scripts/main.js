@@ -282,6 +282,10 @@ conti.navigation = function() {
     $('#scroll-for-more-ability').on('click', function() {
         conti.scrollTo($('#discover-ability'), 20);
     });
+    $('#back-to-top').on('click', function() {
+        conti.scrollTo($('#add-more-ability'), 0);
+        console.log("back to top");
+    });
     $('.menu-toggle').on('click', function(e) {
         conti.mobileNav.toggle();
         e.preventDefault();
