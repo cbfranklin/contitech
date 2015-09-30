@@ -40,6 +40,10 @@ b {
     font-weight: bold;
 }
 
+.conti-yellow{
+    color: #e6a530;
+}
+
 .relative {
     position: relative;
 }
@@ -500,6 +504,9 @@ input#blank {
     background-size: 60% auto;
     background-repeat: no-repeat;
     background-position:bottom center;
+}
+#contact h2{
+    text-align:left;
 }
 
 #add-more-ability .content {
