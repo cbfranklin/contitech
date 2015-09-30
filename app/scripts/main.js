@@ -27,6 +27,10 @@ conti.init = function() {
             conti.WOW = new WOW({
                 mobile: false
             }).init();
+            $('#form-submit').on('click',function(e){
+                conti.formSubmit();
+                e.preventDefault();
+            })
             conti.debouncedResize(function() {
                 conti.getWindowDimensions();
                 conti.delay(function() {
@@ -384,13 +388,31 @@ conti.scrollAdjust = function(e) {
     }
 }
 
-conti.debouncedResize = function on_resize(c, t) {
-    onresize = function() {
+conti.debouncedResize = function(c, t) {
+    var onresize = function() {
         clearTimeout(t);
         t = setTimeout(c, 100)
     };
     return c
 };
+
+conti.formSubmit = function() {
+    var formObj = {};
+    formObj.sAbility = $('#blank').val();
+    formObj.sName = $('#form-name').val();
+    formObj.sEmail = $('#form-email').val();
+    formObj.sContent = $('#form-content').val();
+    console.log(formObj);
+    $.ajax({
+        type: "POST",
+        data: formObj,
+        url: 'http://conticontent.geometrysites.com/Services/content.asmx/ContiEmailSend',
+        contentType: "application/json; charset=utf-8",
+        success: function(msg) {
+            alert(msg);
+        }
+    })
+}
 
 $.fn.scrollStopped = function(callback) {
     var that = this,
