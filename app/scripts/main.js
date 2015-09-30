@@ -412,10 +412,10 @@ conti.formSubmit = function() {
         type: "POST",
         data: formString,
         url: 'http://conticontent.geometrysites.com/Services/content.asmx/ContiEmailSend',
-        contentType: "application/json; charset=utf-8",
-        success: function(msg) {
-            alert(msg);
-        }
+        contentType: "application/json; charset=utf-8"
+    }).always(function(data){
+        $('.content-form').hide();
+        $('.content-form-success').show();
     })
 }
 

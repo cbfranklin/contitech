@@ -354,6 +354,11 @@ section .content {
 .content-form .row {
     margin: 10px 0;
 }
+.content-form-success{
+    display:none;
+    text-align:right;
+    font-size:18px;
+}
 
 .swiper-slide {
     padding: 5%;
