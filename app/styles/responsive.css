@@ -126,6 +126,9 @@
     background-size: 100% auto;
     top: -20px;
 }
+.nav-ability-header-items{
+    display:block;
+}
 }
 
 @media (max-width: 480px) {

@@ -9,7 +9,6 @@ $(function() {
 //init
 conti.init = function() {
     'use strict';
-    console.log('hey')
     //conti.scrollTo($('#add-more-ability'), 0, 0);
     //conti.loadSections(content);
     var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
@@ -29,28 +28,16 @@ conti.init = function() {
                 mobile: false
             }).init();
             $('#form-submit').on('click', function(e) {
-                    conti.formSubmit();
-                    e.preventDefault();
-                })
-                conti.debouncedResize(function() {
-                    conti.getWindowDimensions();
-                    conti.delay(function() {
-                        conti.setStickyAbility();
-                        conti.setNavDimensions();
-                    }, 100)
-                });
-            /*conti.resizeTimer = null;
-            $(window).on('resize', function(e) {
-                clearTimeout(conti.resizeTimer);
-                conti.resizeTimer = setTimeout(function() {
-                    conti.getWindowDimensions();
-                    conti.delay(function() {
-                        conti.setStickyAbility();
-                        conti.setNavDimensions();
-                    }, 100)
-                }, 250);
-
-            });*/
+                conti.formSubmit();
+                e.preventDefault();
+            })
+            conti.debouncedResize(function() {
+                conti.getWindowDimensions();
+                conti.delay(function() {
+                    conti.setStickyAbility();
+                    conti.setNavDimensions();
+                }, 100)
+            });
             $(window).scrollStopped(function() {
                 if (conti.windowDimensions.width > 768) {
                     conti.delay(conti.scrollAdjust, 1000);
@@ -192,7 +179,11 @@ conti.mobileNav = {
     //set section heights to screen height
 conti.setSectionHeight = function() {
     'use strict';
-    if (conti.windowDimensions.width > 768) {
+    $('section').css({
+        'min-height': conti.windowDimensions.height,
+        'height': 'auto'
+    });
+    /*if (conti.windowDimensions.width > 768) {
         $('section').css({
             'height': conti.windowDimensions.height,
             'min-height': 'initial'
@@ -202,7 +193,7 @@ conti.setSectionHeight = function() {
             'min-height': conti.windowDimensions.height,
             'height': 'auto'
         });
-    }
+    }*/
 
 };
 //parallax
@@ -267,7 +258,7 @@ conti.parallax = function() {
                 y: '20%',
                 ease: Linear.easeInOut
             })
-            //.addIndicators()
+            .addIndicators()
             .addTo(conti.parallax.controller);
 
 
@@ -412,14 +403,14 @@ conti.debouncedResize = function(c, t) {
 
 conti.formSubmit = function() {
     var formObj = {};
-    formObj.sAbility = $('#blank').val();
     formObj.sName = $('#form-name').val();
     formObj.sEmail = $('#form-email').val();
     formObj.sContent = $('#form-content').val();
-    console.log(formObj);
+    formObj.sAbility = $('#blank').val();
+    var formString = JSON.stringify(formObj)
     $.ajax({
         type: "POST",
-        data: formObj,
+        data: formString,
         url: 'http://conticontent.geometrysites.com/Services/content.asmx/ContiEmailSend',
         contentType: "application/json; charset=utf-8",
         success: function(msg) {

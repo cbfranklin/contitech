@@ -127,6 +127,9 @@ b {
     content: url('../images/contitech-symbol-small.png');
     padding-left:10px;
 }
+.nav-ability-header-items{
+    display:none;
+}
 
 #left-hand-ability {
     position: fixed;
@@ -245,7 +248,7 @@ b {
 }
 
 section {
-    overflow: hidden;
+    overflow:hidden;
     position: relative;
 }
 
