@@ -248,7 +248,7 @@ conti.parallax = function() {
                 y: '20%',
                 ease: Linear.easeInOut
             })
-            .addIndicators()
+            //.addIndicators()
             .addTo(conti.parallax.controller);
 
 
