@@ -27,16 +27,28 @@ conti.init = function() {
             conti.WOW = new WOW({
                 mobile: false
             }).init();
-            $('#form-submit').on('click',function(e){
-                conti.formSubmit();
-                e.preventDefault();
-            })
-            conti.debouncedResize(function() {
-                conti.getWindowDimensions();
-                conti.delay(function() {
-                    conti.setStickyAbility();
-                    conti.setNavDimensions();
-                }, 100)
+            $('#form-submit').on('click', function(e) {
+                    conti.formSubmit();
+                    e.preventDefault();
+                })
+                /*conti.debouncedResize(function() {
+                    conti.getWindowDimensions();
+                    conti.delay(function() {
+                        conti.setStickyAbility();
+                        conti.setNavDimensions();
+                    }, 100)
+                });*/
+            conti.resizeTimer = null;
+            $(window).on('resize', function(e) {
+                clearTimeout(conti.resizeTimer);
+                conti.resizeTimer = setTimeout(function() {
+                    conti.getWindowDimensions();
+                    conti.delay(function() {
+                        conti.setStickyAbility();
+                        conti.setNavDimensions();
+                    }, 100)
+                }, 250);
+
             });
             $(window).scrollStopped(function() {
                 if (conti.windowDimensions.width > 768) {
@@ -388,13 +400,14 @@ conti.scrollAdjust = function(e) {
     }
 }
 
-conti.debouncedResize = function(c, t) {
-    var onresize = function() {
+/*conti.debouncedResize = function(c, t) {
+    onresize = function() {
         clearTimeout(t);
         t = setTimeout(c, 100)
     };
     return c
-};
+};*/
+
 
 conti.formSubmit = function() {
     var formObj = {};
