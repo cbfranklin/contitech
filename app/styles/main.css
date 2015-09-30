@@ -380,12 +380,12 @@ section .content {
 }
 
 .carousel-copy p {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .carousel-pdf {
     padding: 10px;
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .carousel-pdf a {
