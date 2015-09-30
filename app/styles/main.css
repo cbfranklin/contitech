@@ -102,7 +102,9 @@ b {
     font-weight: bold;
     text-transform: capitalize;
 }
-
+#nav-ability h3 a{
+    color:#fff;
+}
 #nav-ability em {
     font-style: normal;
     font-weight: lighter;
@@ -152,6 +154,10 @@ b {
 .logo img {
     margin-top: 40px;
     margin-left: 22px;
+}
+
+.find-your-ability{
+    padding-bottom:15px;
 }
 
 .header-nav {
