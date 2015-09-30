@@ -178,10 +178,12 @@ conti.setSectionHeight = function() {
     if (conti.windowDimensions.width > 768) {
         $('section').css({
             'height': conti.windowDimensions.height,
+            'min-height': 'initial'
         });
     } else {
         $('section').css({
             'min-height': conti.windowDimensions.height,
+            'height': 'auto'
         });
     }
 
