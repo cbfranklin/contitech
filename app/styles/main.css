@@ -119,6 +119,11 @@ b {
     color: #e6a530;
 }
 
+#nav-ability a.active:after{
+    content: url('../images/contitech-symbol-small.png');
+    padding-left:10px;
+}
+
 #left-hand-ability {
     position: fixed;
     top: 150px;
@@ -242,8 +247,7 @@ section {
 
 #sticky-ability {
     position: fixed;
-    z-index: 3;
-    display: none;
+    z-index: 10;
 }
 
 #scroll-for-more-ability {
@@ -395,6 +399,11 @@ input#blank {
     color: #fff;
 }
 
+#add-more-ability, #what-ability, #contact{
+    z-index:11;
+    background:#000;
+}
+
 #blank-ability {
     font-size: 32px;
     text-align: right;
@@ -421,6 +430,10 @@ input#blank {
 #form-ability label {
     text-align: right;
     width: 100%;
+}
+
+#discover-ability .content-header{
+    border:none!important;
 }
 
 
@@ -463,13 +476,13 @@ input#blank {
 #discover-ability .parallax-background {
     background-image: url(../images/parallax/background/discover-ability.jpg);
     background-size: 100% auto;
-    top: -30%;
+    top: -40%;
 }
 
 #discover-ability .parallax-foreground {
     background-image: url(../images/parallax/foreground/discover-ability-alt.png);
     background-size: 100% auto;
-    top: 0;
+    top: -170px;
 }
 
 #add-more-ability .content {

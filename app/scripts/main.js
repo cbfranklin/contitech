@@ -104,8 +104,7 @@ conti.loadSections = function(content) {
     $('#left-hand-ability').html(rendered);
     conti.sections = [{
         el: 'add-more-ability',
-        navAbility: false,
-        stickyAbility: false
+        navAbility: false
     }, {
         el: 'discover-ability',
         navAbility: true,
@@ -114,19 +113,16 @@ conti.loadSections = function(content) {
     for (var i in content) {
         conti.sections.push({
             el: content[i].prefix + '-ability',
-            navAbility: true,
-            stickyAbility: true
+            navAbility: true
         });
     }
     conti.sections.push({
         el: 'what-ability',
-        navAbility: false,
-        stickyAbility: false
+        navAbility: false
     });
     conti.sections.push({
         el: 'contact',
-        navAbility: false,
-        stickyAbility: false
+        navAbility: false
     });
     conti.swiper.instances = {};
 
@@ -246,50 +242,27 @@ conti.parallax = function() {
         conti.parallax.scene.background[el] = new ScrollMagic.Scene({
                 triggerElement: '#' + el,
                 triggerHook: 0.1,
-                duration: '125%',
-                offset: '0.2'
+                duration: '110%',
+                offset: '0.1'
             }).setTween('#' + el + ' .parallax-background', {
                 y: '20%',
                 ease: Linear.easeInOut
             })
-            //.addIndicators()
+            .addIndicators()
             .addTo(conti.parallax.controller);
 
 
 
         conti.parallax.scene.background[el].on('enter', function(e) {
-            //conti.advanceList($('#left-hand-ability'));
             conti.updateCurrentScene(e);
         })
-
-        /*if (el === 'what-ability') {
-            conti.parallax.scene.foreground[el].on('enter', function() {
-                document.getElementById('blank').select();
-                $('#blank').click();
-            });
-        }*/
         if (navAbility) {
             conti.parallax.scene.background[el].on('enter', conti.updateNavigation);
         } else {
             conti.parallax.scene.background[el].on('enter', conti.hideNavigation);
         }
-        if (stickyAbility) {
-            if (el !== 'discover-ability') {
-                conti.parallax.scene.foreground[el].on('enter', conti.showStickyAbility);
-            }
-        } else {
-            conti.parallax.scene.background[el].on('enter', conti.hideStickyAbility);
-        }
     });
     conti.parallax.scene.foreground['add-more-ability'].on('enter', conti.hideNavigation);
-};
-conti.showStickyAbility = function() {
-    'use strict';
-    $('#sticky-ability').show();
-};
-conti.hideStickyAbility = function() {
-    'use strict';
-    $('#sticky-ability').hide();
 };
 //ability navigation
 conti.navigation = function() {
