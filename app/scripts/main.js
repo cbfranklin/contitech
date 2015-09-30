@@ -284,7 +284,6 @@ conti.navigation = function() {
     });
     $('#back-to-top').on('click', function() {
         conti.scrollTo($('#add-more-ability'), 0);
-        console.log("back to top");
     });
     $('.menu-toggle').on('click', function(e) {
         conti.mobileNav.toggle();
