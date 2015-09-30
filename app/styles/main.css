@@ -380,6 +380,9 @@ section .content {
 .carousel-pdf a {
     display: block;
     float: left;
+    width:130px;
+    overflow:hidden;
+    margin: 0 10px;
 }
 
 .carousel-pdf img {
