@@ -52,14 +52,12 @@
         display: block!important;
         background-color: #000;
         background-color: rgba(0, 0, 0, 0.9);
-        transition: height 0.5s;
         text-align: center;
         border-bottom: 1px solid #e6a530;
         height: 0;
     }
     #nav-ability.open {
         height: 100%;
-        transition: height 0.5s;
     }
     #nav-ability li {
         list-style: none;

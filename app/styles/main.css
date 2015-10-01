@@ -321,7 +321,7 @@ section em,
     opacity: 0;
 }
 
-section > div {
+.parallax-foreground, .parallax-background {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -329,9 +329,16 @@ section > div {
     left: 0;
 }
 
+section .content{
+    position:relative;
+    margin-left:0;
+}
+
+
 section .content {
     z-index: 4;
     width: 75%;
+    padding-bottom:20px;
 }
 
 .swiper-container {
