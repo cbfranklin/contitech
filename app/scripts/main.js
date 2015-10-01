@@ -416,6 +416,7 @@ conti.formSubmit = function() {
     }).always(function(data){
         $('.content-form').hide();
         $('.content-form-success').show();
+        conti.scrollTo($('#what-ability'),0,0);
     })
 }
 
