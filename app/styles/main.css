@@ -409,6 +409,10 @@ section .content {
 
 .carousel-pdf img {
     padding: 5px;
+    width:50px;
+    height: auto;
+    display:block;
+    margin:0 auto;
 }
 
 .carousel-pdf-title {

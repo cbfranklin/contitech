@@ -393,7 +393,7 @@ conti.scrollAdjust = function(e) {
 }
 
 conti.debouncedResize = function(c, t) {
-    function onresize() {
+    onresize = function() {
         clearTimeout(t);
         t = setTimeout(c, 100)
     };
