@@ -10,46 +10,75 @@ $(function() {
 conti.init = function() {
     'use strict';
     //conti.scrollTo($('#add-more-ability'), 0, 0);
-    //conti.loadSections(content);
-    var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet'
-    $.ajax({
+    var req = 'http://conticontent.geometrysites.com/Services/content.asmx/ContiDataGet1'
+    var serviceXHR = $.ajax({
         dataType: "json",
         url: req,
         mimeType: "application/json",
         success: function(data) {
+            console.log('service XHR success')
+            console.log(data)
             conti.loadSections(data);
-            conti.getWindowDimensions();
-            conti.setStickyAbility();
-            conti.navigation();
-            conti.parallax();
-            conti.whatAbility();
-            conti.buttons();
-            conti.WOW = new WOW({
-                mobile: false
-            }).init();
-            $('#form-submit').on('click', function(e) {
-                conti.formSubmit();
-                e.preventDefault();
-            })
-            conti.debouncedResize(function() {
-                conti.getWindowDimensions();
-                conti.delay(function() {
-                    conti.setStickyAbility();
-                    conti.setNavDimensions();
-                }, 100)
-            });
-            $(window).scrollStopped(function() {
-                if (conti.windowDimensions.width > 768) {
-                    conti.delay(conti.scrollAdjust, 1000);
-                }
-            })
-            conti.delay(function() {
-                $('.wrapper').addClass('init');
-            }, 250)
-
+            conti.hello()
         }
     });
+
+    serviceXHR.fail(function() {
+        console.log('service XHR fail')
+        var req = 'data/content.json';
+        var backupXHR = $.ajax({
+            dataType: "json",
+            url: req,
+            mimeType: "application/json",
+            success: function(data) {
+                console.log('backup XHR success')
+                console.log(data)
+                conti.loadSections(data);
+                conti.hello();
+            }
+        });
+        backupXHR.fail(function() {
+            console.log('backup XHR fail')
+        });
+
+    });
 };
+
+conti.hello = function() {
+    conti.getWindowDimensions();
+    conti.setStickyAbility();
+    conti.navigation();
+    conti.parallax();
+    conti.whatAbility();
+    conti.buttons();
+    conti.WOW = new WOW({
+        mobile: false
+    }).init();
+    $('#form-submit').on('click', function(e) {
+        conti.formSubmit();
+        e.preventDefault();
+    })
+    conti.debouncedResize(function() {
+        conti.getWindowDimensions();
+        conti.delay(function() {
+            conti.setStickyAbility();
+            conti.setNavDimensions();
+        }, 100)
+    });
+    $(window).scrollStopped(function() {
+        if (conti.windowDimensions.width > 768) {
+            conti.delay(conti.scrollAdjust, 1000);
+        }
+    })
+    conti.delay(function() {
+            $('.wrapper').addClass('init');
+        }, 250)
+        //for detecting iOS zoom (zoom out on form submit??)
+        /*$('body').on("gesturechange", function(event) {
+            var scale = event.originalEvent.scale;
+            console.log(scale)
+        });*/
+}
 conti.buttons = function() {
         $('#button-contact').on('click', function(e) {
             conti.scrollTo($('#contact'));
@@ -413,10 +442,10 @@ conti.formSubmit = function() {
         data: formString,
         url: 'http://conticontent.geometrysites.com/Services/content.asmx/ContiEmailSend',
         contentType: "application/json; charset=utf-8"
-    }).always(function(data){
+    }).always(function(data) {
         $('.content-form').hide();
         $('.content-form-success').show();
-        conti.scrollTo($('#what-ability'),0,0);
+        conti.scrollTo($('#what-ability'), 0, 0);
     })
 }
 
